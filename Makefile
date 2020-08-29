@@ -1,13 +1,15 @@
 NAME	=	miniRT
+DIRSRC	=	./srcs/
+DIROBJ	=	./obj/
 INC		=	/usr/include
 INCLIB	=	$(INC)/../lib
 INCLUDE	=	./Includes/
-HT		=	Linux
 
-CFLAGS	=	-I$(INC) -O3 -I$(INCLUDE)
+CFLAGS	=	-I$(INC) -O3 -I$(INCLUDE) -Wall -Wextra -Werror
 
-SRC 	=	./srcs/minirt.c ./srcs/ft_init_scene.c
+SRC 	=	$(DIRSRC)minirt.c $(DIRSRC)ft_init_scene.c $(DIRSRC)ft_fill_scene.c
 OBJ 	=	$(SRC:.c=.o)
+OBJS	=	$(OBJ:%=$(DIROBJ)%)
 
 CC		=	gcc
 RM		=	/bin/rm -f
@@ -20,8 +22,12 @@ $(NAME)	:	$(OBJ)
 clean	:
 			$(RM) $(OBJ)
 
-fclean	:
+fclean	:	clean
 			$(RM) $(NAME) *~ core *.core
 
-
 re		: 	fclean all
+
+.PHONY	:	all clean re
+
+%.o		:	$(DIRSRC)/%.c
+			$(CC) $(INCLUDE) $(CFLAGS) -o $(DIROBJ)/$@ -c $<

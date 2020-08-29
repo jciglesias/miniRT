@@ -6,49 +6,49 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:26:35 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/29 00:29:58 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/08/29 18:23:47 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	ft_init_int(int *a, int *b, int *c, int *d)
+void	ft_init_int(int i, int *a)
 {
-	(*a) = 0;
-	(*b) = 0;
-	(*c) = 0;
-	(*d) = 0;
+	while (i)
+		a[--i] = 0;
 }
 
-void	ft_init_double(double *a, double *b, double *c, double *d)
+void	ft_init_double(int i, double *a)
 {
-	(*a) = 0.;
-	(*b) = 0.;
-	(*c) = 0.;
-	(*d) = 0.;
+	while (i)
+		a[--i] = 0.;
 }
-
-void	ft_init_scene(t_scene scene)
+//#include <unistd.h>
+void	ft_init_scene(t_scene *scene)
 {
-	ft_init_int(&scene.res, &scene.x, &scene.y, &scene.amb);
-	ft_init_int(&scene.r, &scene.g, &scene.b, &scene.cam);
-	ft_init_int(&scene.fov, &scene.light, &scene.lr, &scene.lg);
-	ft_init_int(&scene.lb, &scene.sphere, &scene.spr, &scene.spg);
-	ft_init_int(&scene.spb, &scene.plane, &scene.plr, &scene.plg);
-	ft_init_int(&scene.plb, &scene.square, &scene.sqr, &scene.sqg);
-	ft_init_int(&scene.sqb, &scene.cy, &scene.cyr, &scene.cyg);
-	ft_init_int(&scene.cyb, &scene.tr, &scene.trr, &scene.trg);
-	ft_init_double(&scene.lrr, &scene.vpx, &scene.vpy, &scene.vpz);
-	ft_init_double(&scene.nox, &scene.noy, &scene.noz, &scene.lpx);
-	ft_init_double(&scene.lpy, &scene.lpz, &scene.brr, &scene.spx);
-	ft_init_double(&scene.spy, &scene.spz, &scene.spd, &scene.plx);
-	ft_init_double(&scene.ply, &scene.plz, &scene.nopx, &scene.nopy);
-	ft_init_double(&scene.nopz, &scene.sqx, &scene.sqy, &scene.sqz);
-	ft_init_double(&scene.nosx, &scene.nosy, &scene.nosz, &scene.sqs);
-	ft_init_double(&scene.cyx, &scene.cyy, &scene.cyz, &scene.nocx);
-	ft_init_double(&scene.nocy, &scene.nocz, &scene.cyd, &scene.cyh);
-	ft_init_double(&scene.trx1, &scene.try1, &scene.trz1, &scene.trx3);
-	ft_init_double(&scene.trx2, &scene.try2, &scene.trz2, &scene.try3);
-	scene.trb = 0;
-	scene.trz3 = 0.;
+//	char c;
+	scene->r = 0;
+//	scene->res[0] = 5;
+	ft_init_int(2, scene->res);
+//	c = scene->res[0] + 48;
+//	scene->a = write(1, &c, 1);
+	scene->a = 0;
+	scene->al = 0.;
+	ft_init_int(3, scene->rgb);
+	scene->c = 0;
+	ft_init_double(3, scene->cam);
+	ft_init_double(3, scene->vec);
+	scene->fov = 0;
+	scene->l = 0;
+	scene->light = NULL;
+	scene->sp = 0;
+	scene->sphere = NULL;
+	scene->pl = 0;
+	scene->plane = NULL;
+	scene->sq = 0;
+	scene->square = NULL;
+	scene->cy = 0;
+	scene->cylinder = NULL;
+	scene->tr = 0;
+	scene->triangle = NULL;
 }

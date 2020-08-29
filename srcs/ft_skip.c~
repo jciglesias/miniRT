@@ -1,0 +1,20 @@
+
+#include "minirt.h"
+
+int	ft_skip(char *set, char *line)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (set[i])
+	{
+		if (set[i++] == line[j])
+		{
+			i = 0;
+			j++;
+		}
+	}
+	return (j);
+}
