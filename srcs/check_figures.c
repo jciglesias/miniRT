@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 18:55:55 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/31 00:25:42 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/08/31 00:31:05 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	ft_check_sp(char *line)
 {
 	char	**split;
+	int		i;
 
+	i = 0;
 	split = ft_split(line, ' ');
 	if (!ft_check_xyz(split[1]))
 		return (0);
