@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 16:57:59 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/30 13:52:59 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/08/30 22:21:45 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,6 @@ typedef struct		s_scene
 
 void				ft_init_scene(t_scene *scene);
 void				ft_fill_scene(t_scene *scene, int fd);
-int					ft_check_entry(int fd, char **line, int a, t_scene);
+int					ft_check_entry(int fd, char **line, int a);
 int					ft_skip(char *str, char *line);
 #endif

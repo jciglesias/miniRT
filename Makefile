@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/20 19:19:55 by ciglesia          #+#    #+#              #
-#    Updated: 2020/08/30 18:18:07 by ciglesia         ###   ########.fr        #
+#    Updated: 2020/08/31 00:08:52 by jiglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -75,7 +75,7 @@ ECHO		=	/bin/echo -e
 
 #************************ MAIN COMPILATION *************************
 
-$(NAME)	:		libft $(OBJS)
+$(NAME)	:		ftlib $(OBJS)
 				@$(CC)  $(INCLUDE) $(CFLAGS) -o $(NAME) $(OBJS) $(INC_LIB)
 				@$(ECHO) '> Compiled'
 
@@ -94,7 +94,7 @@ fclean	:		clean
 
 re		:		fclean all
 
-libft	:
+ftlib	:
 				@(cd $(SUB_MAKE) && $(MAKE))
 
 .PHONY	:		all clean re

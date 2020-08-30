@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:26:35 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/29 18:23:47 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/08/30 23:53:43 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ void	ft_init_scene(t_scene *scene)
 	scene->al = 0.;
 	ft_init_int(3, scene->rgb);
 	scene->c = 0;
-	ft_init_double(3, scene->cam);
-	ft_init_double(3, scene->vec);
-	scene->fov = 0;
+	scene->cam = NULL;
 	scene->l = 0;
 	scene->light = NULL;
 	scene->sp = 0;
