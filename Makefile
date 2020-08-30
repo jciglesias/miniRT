@@ -1,33 +1,102 @@
+#******************************************************************************#
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/08/20 19:19:55 by ciglesia          #+#    #+#              #
+#    Updated: 2020/08/30 18:18:07 by ciglesia         ###   ########.fr        #
+#                                                                              #
+#******************************************************************************#
+
 NAME		=	miniRT
+
+#****************** INC *******************#
+# General
+INC			=	./Includes/
+
+# Libft
+SUB_MAKE	=	./libft/
+INCFT		=	./libft/
+# Lib mlx
+DIRMLX		=	/usr/lib/
+INCMLX		=	/usr/include/
+
+
+INCLUDE		=	-I $(INCMLX) -O3 -I $(INCFT) -I $(INC)
+
+INC_LIB		=	-L$(INCFT) -lft -L$(DIRMLX) -lmlx -lXext -lX11 -lm -lbsd
+
+
+#***************** SRCS ******************#
+
 DIRSRC		=	./srcs/
-DIROBJ		=	./obj/
-INC			=	/usr/include
-INCLIB		=	$(INC)/../lib
-INCLUDE		=	./Includes/
+DIRCOMP		=	./srcs/computer-system/
+DIRINTF		=	./srcs/interface/
 
-CFLAGS		=	-I$(INC) -O3 -I$(INCLUDE) -Wall -Wextra -Werror
+SRC			=	minirt.c ft_init_scene.c ft_fill_scene.c
+COMPUTER_S	=
+INTERFACE	=
 
-SRC 		=	$(DIRSRC)minirt.c $(DIRSRC)ft_init_scene.c $(DIRSRC)ft_fill_scene.c
-OBJ 		=	$(SRC:.c=.o)
-OBJS		=	$(OBJ:%=$(DIROBJ)%)
+#***************** DEPS ******************#
 
-CC			=	gcc
+DIROBJ		=	./depo/
+
+OAUX		=	$(SRC:%=$(DIROBJ)%) $(COMPUTER_S:%=$(DIROBJ)%) $(INTERFACE:%=$(DIROBJ)%)
+DEPS		=	$(OAUX:.c=.d)
+OBJS		=	$(OAUX:.c=.o)
+
+ifdef FLAGS
+	ifeq ($(FLAGS), no)
+CFLAGS		=
+	endif
+	ifeq ($(FLAGS), debug)
+CFLAGS		=	-Wall -Wextra -Werror -ansi -pedantic -g
+	endif
+else
+CFLAGS		=	-Wall -Wextra -Werror
+endif
+
+CC			=	/usr/bin/gcc
 RM			=	/bin/rm -f
+ECHO		=	/bin/echo -e
 
-all		:	$(NAME)
+#************************ DEPS COMPILATION *************************
 
-$(NAME)	:	$(OBJ)
-			$(CC) -o $(NAME) $(OBJ) -L./include/ -lmlx -L$(INCLIB) -lXext -lX11 -lm -lbsd
+%.o		:		../$(DIRSRC)/%.c
+				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
+
+%.o		:		../$(DIRCOMP)/%.c
+				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
+
+%.o		:		../$(DIRINTF)/%.c
+				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
+
+#************************ MAIN COMPILATION *************************
+
+$(NAME)	:		libft $(OBJS)
+				@$(CC)  $(INCLUDE) $(CFLAGS) -o $(NAME) $(OBJS) $(INC_LIB)
+				@$(ECHO) '> Compiled'
 
 clean	:
-			$(RM) $(OBJ)
+				@($(RM) $(OBJS))
+				@($(RM) $(DEPS))
+				@(cd $(SUB_MAKE) && $(MAKE) clean)
+				@$(ECHO) '> Directory cleaned'
 
-fclean	:	clean
-			$(RM) $(NAME) *~ core *.core
+all		:		$(NAME)
 
-re		: 	fclean all
+fclean	:		clean
+				@$(RM) $(NAME)
+				@(cd $(SUB_MAKE) && $(MAKE) fclean)
+				@$(ECHO) '> Remove executable'
 
-.PHONY	:	all clean re
+re		:		fclean all
 
-%.o		:	$(DIRSRC)/%.c
-			$(CC) $(INCLUDE) $(CFLAGS) -o $(DIROBJ)/$@ -c $<
+libft	:
+				@(cd $(SUB_MAKE) && $(MAKE))
+
+.PHONY	:		all clean re
+
+-include $(DEPS)
