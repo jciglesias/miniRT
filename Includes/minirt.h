@@ -6,13 +6,14 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 16:57:59 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/30 00:03:11 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/08/30 13:52:59 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef		MINIRT_H
 # define	MINIRT_H
 # include <mlx.h>
+# include "libft.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -22,7 +23,7 @@
 
 typedef struct		s_cam
 {
-	double			cam[3];
+	double			xyz[3];
 	double			vec[3];
 	int				fov;
 	struct s_cam	*next;
@@ -103,4 +104,6 @@ typedef struct		s_scene
 
 void				ft_init_scene(t_scene *scene);
 void				ft_fill_scene(t_scene *scene, int fd);
+int					ft_check_entry(int fd, char **line, int a, t_scene);
+int					ft_skip(char *str, char *line);
 #endif

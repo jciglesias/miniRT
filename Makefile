@@ -1,18 +1,18 @@
-NAME	=	miniRT
-DIRSRC	=	./srcs/
-DIROBJ	=	./obj/
-INC		=	/usr/include
-INCLIB	=	$(INC)/../lib
-INCLUDE	=	./Includes/
+NAME		=	miniRT
+DIRSRC		=	./srcs/
+DIROBJ		=	./obj/
+INC			=	/usr/include
+INCLIB		=	$(INC)/../lib
+INCLUDE		=	./Includes/
 
-CFLAGS	=	-I$(INC) -O3 -I$(INCLUDE) -Wall -Wextra -Werror
+CFLAGS		=	-I$(INC) -O3 -I$(INCLUDE) -Wall -Wextra -Werror
 
-SRC 	=	$(DIRSRC)minirt.c $(DIRSRC)ft_init_scene.c $(DIRSRC)ft_fill_scene.c
-OBJ 	=	$(SRC:.c=.o)
-OBJS	=	$(OBJ:%=$(DIROBJ)%)
+SRC 		=	$(DIRSRC)minirt.c $(DIRSRC)ft_init_scene.c $(DIRSRC)ft_fill_scene.c
+OBJ 		=	$(SRC:.c=.o)
+OBJS		=	$(OBJ:%=$(DIROBJ)%)
 
-CC		=	gcc
-RM		=	/bin/rm -f
+CC			=	gcc
+RM			=	/bin/rm -f
 
 all		:	$(NAME)
 
