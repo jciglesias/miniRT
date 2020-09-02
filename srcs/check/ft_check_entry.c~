@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:45:47 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/30 18:44:48 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/01 21:18:01 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 char	*ft_check_elem(char *line)
 {
+	if (!line)
+		return (0);
 	if (line[0] == 'R')
 		return ("R");
 	else if (line[0] == 'A')
 		return ("A");
+	else if (line[0] == 'c' && line[1] == 'y')
+		return ("cy");
 	else if (line[0] == 'c')
 		return ("c");
 	else if (line[0] == 'l')
@@ -28,8 +32,6 @@ char	*ft_check_elem(char *line)
 		return ("pl");
 	else if (line[0] == 's' && line[1] == 'q')
 		return ("sq");
-	else if (line[0] == 'c' && line[1] == 'y')
-		return ("cy");
 	else if (line[0] == 't' && line[1] == 'r')
 		return ("tr");
 	else
@@ -40,27 +42,27 @@ int		ft_check_line(char *elem, char *line)
 {
 	if (elem == NULL)
 		return (0);
-	else if (elem == "R")
+	else if (!ft_strncmp(elem, "R", 1))
 		return (ft_check_r(line));
-	else if (elem == "A")
+	else if (!ft_strncmp(elem, "A", 1))
 		return (ft_check_a(line));
-	else if (elem == "c")
+	else if (!ft_strncmp(elem, "c", 1))
 		return (ft_check_c(line));
-	else if (elem == "l")
+	else if (!ft_strncmp(elem, "l", 1))
 		return (ft_check_l(line));
-	else if (elem == "sp")
+	else if (!ft_strncmp(elem, "sp", 2))
 		return (ft_check_sp(line));
-	else if (elem == "pl")
+	else if (!ft_strncmp(elem, "pl", 2))
 		return (ft_check_pl(line));
-	else if (elem == "sq")
+	else if (!ft_strncmp(elem, "sq", 2))
 		return (ft_check_sq(line));
-	else if (elem == "cy")
+	else if (!ft_strncmp(elem, "cy", 2))
 		return (ft_check_cy(line));
 	else
 		return (ft_check_tr(line));
 }
 
-int		ft_check_entry(int fd, char **line, int v)
+int		ft_check_entry(int fd, char *line)
 {
 	char	*elem;
 	int		r;
@@ -68,16 +70,19 @@ int		ft_check_entry(int fd, char **line, int v)
 
 	r = 0;
 	a = 0;
-	while (get_next_line(fd, line))
+	elem = NULL;
+	while (get_next_line(fd, &line))
 	{
-		elem = ft_check_elem(*line);
-		if (elem == "R")
+		elem = ft_check_elem(line);
+		ft_putstr(elem);
+		ft_putchar('\n');
+		if (elem[0] && elem[0] == 'R')
 			r++;
-		if (elem == "A")
+		if (elem[0] && elem[0] == 'A')
 			a++;
 		if (a > 1 || r > 1)
 			return (0);
-		if (!ft_check_line(elem, *line))
+		if (!ft_check_line(elem, line))
 			return (0);
 	}
 	return (1);

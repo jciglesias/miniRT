@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   suport_check.c                                     :+:      :+:    :+:   */
+/*   ft_exp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/30 20:47:23 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/30 20:54:06 by jiglesia         ###   ########.fr       */
+/*   Created: 2020/08/31 22:27:55 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/08/31 22:30:25 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_check_double(char *dob)
-{}
+#include "libft.h"
 
-int	ft_check_xyz(char *xyz)
-{}
-
-int	ft_check_vec(char *vec)
+int	ft_exp(int a, int e)
 {
-	//-1 < x > 1
-	//xyz
-}
+	int	i;
 
-int	ft_check_rgb(char *rgb)
-{
-	//0 <= x <= 255
+	i = a;
+	while (--e)
+		a *= i;
+	return (a);
 }

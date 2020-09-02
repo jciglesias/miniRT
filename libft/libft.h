@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 18:29:37 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/30 23:58:14 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/01 19:10:49 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,8 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		get_next_line(int fd, char **line);
+double	ft_atod(char *str);
+int		ft_exp(int a, int e);
+int		ft_putstr(char *str);
+int		ft_putchar(char c);
 #endif
