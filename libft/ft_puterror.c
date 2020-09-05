@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_puterror.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/01 19:06:16 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/05 12:11:24 by jiglesia         ###   ########.fr       */
+/*   Created: 2020/09/02 13:20:42 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/09/02 13:22:35 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putstr(char *str)
+int	ft_puterror(char *str, int a)
 {
-	int i;
+	int	i;
 
-	i = 0;
-	if (str)
-		while (str[i])
-			ft_putchar(str[i++]);
-	return(i);
+	i = ft_strlen(str);
+	write(2, str, i);
+	return (a);
 }

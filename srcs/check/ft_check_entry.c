@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:45:47 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/02 01:26:30 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:59:47 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,12 @@ int		ft_check_entry(int fd, char *line)
 	char	*elem;
 	int		r;
 	int		a;
-	int		i;
+	char	**bowl;
 
-	i = 1;
 	r = 0;
 	a = 0;
 	elem = NULL;
-	while (get_next_line(fd, &line) == 1 || i--)
+	while ((bowl = get_next_line(fd, &line)))
 	{
 		elem = ft_check_elem(line);
 		if (elem[0] && elem[0] == 'R')
@@ -81,12 +80,19 @@ int		ft_check_entry(int fd, char *line)
 		if (elem[0] && elem[0] == 'A')
 			a++;
 		if (a > 1 || r > 1)
-			return (0);
+		{
+			free(line);
+			return (ft_puterror("Error\ntoo many A or R", 0));
+		}
 		ft_putstr(elem);
 		ft_putchar('\n');
 		if (!ft_check_line(elem, line))
+		{
+			free(line);
+			free(*bowl);
 			return (0);
+		}
 	}
-	//ft_putstr(line);
+	free(line);
 	return (1);
 }

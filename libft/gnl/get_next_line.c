@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 13:43:51 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/01/19 16:24:36 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/05 17:20:46 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int				ft_newline(char **line, char *bowl, size_t j)
 	return (0);
 }
 
-int				get_next_line(int fd, char **line)
+char			**get_next_line(int fd, char **line)
 {
 	char			spoon[BUFFER_SIZE + 1];
 	static char		*bowl;
@@ -87,7 +87,7 @@ int				get_next_line(int fd, char **line)
 		{
 			spoon[j] = 0;
 			if (!(bowl = ft_realloc(bowl)))
-				return (-1);
+				return (&bowl);
 			if (!(ft_fillbowl(spoon, bowl)))
 				break ;
 		}
@@ -95,8 +95,8 @@ int				get_next_line(int fd, char **line)
 			bowl = ft_scrapbowl(bowl);
 		if (a == 0)
 			bowl = ft_finalfree(bowl);
-		return (a);
+		return (&bowl);
 	}
 	line = NULL;
-	return (-1);
+	return (&bowl);
 }

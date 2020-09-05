@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 16:57:59 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/01 19:30:53 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/05 14:38:55 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ int					ft_check_double(char *dob);
 int					ft_check_xyz(char *xyz);
 int					ft_check_vec(char *vec);
 int					ft_check_rgb(char *rgb);
+int					ft_strerror(char *str, int a, char **line);
+
 
 //int					ft_skip(char *str, char *line);
 #endif

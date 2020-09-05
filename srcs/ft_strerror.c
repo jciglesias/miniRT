@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strerror.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/01 19:06:16 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/05 12:11:24 by jiglesia         ###   ########.fr       */
+/*   Created: 2020/09/04 23:01:55 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/09/05 13:09:17 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minirt.h"
 
-int	ft_putstr(char *str)
+int	ft_strerror(char *str, int a, char **line)
 {
-	int i;
+	int	i;
 
+	i = ft_strlen(str);
+	i = write(2, str, i);
 	i = 0;
-	if (str)
-		while (str[i])
-			ft_putchar(str[i++]);
-	return(i);
+	while (line[i])
+	{
+		free(line[i]);
+		line[i++] = NULL;
+	}
+	free(line);
+	return (a);
 }
