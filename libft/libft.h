@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 18:29:37 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/05 17:21:15 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/13 01:50:34 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ int		ft_exp(int a, int e);
 int		ft_putstr(char *str);
 int		ft_putchar(char c);
 int		ft_puterror(char *str, int a);
+void	ft_putnbr(int n);
 #endif

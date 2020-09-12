@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 21:49:08 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/13 01:17:26 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/13 01:52:44 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	ft_fill_tr(char *line, t_scene *scene)
 
 	split = ft_split(line, ' ');
 	new = ft_init_tr();
+	scene->tr++;
 	ft_fill_xyz(new->xyz, split[1]);
 	ft_fill_xyz(&new->xyz[3], split[2]);
 	ft_fill_xyz(&new->xyz[6], split[3]);
