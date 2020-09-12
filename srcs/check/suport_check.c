@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 20:47:23 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/05 00:11:07 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/12 19:08:55 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_check_double(char *dob)
 	while (dob[++i])
 	{
 		if (dob[i] == '.')
-				i++;
+			i++;
 		if (dob[i] < '0' || dob[i] > '9')
 			return (ft_puterror("Error\nno double ", 0));
 	}
@@ -42,7 +42,7 @@ int	ft_check_xyz(char *xyz)
 	i = 0;
 	while (split[i])
 		if (!ft_check_double(split[i++]))
-			return (ft_strerror("Error\nwrong xyz ", 0, split));
+			return (ft_strerror("for xyz ", 0, split));
 	return (ft_strerror("", 1, split));
 }
 

@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:45:47 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/05 18:59:47 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/12 19:05:42 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,24 @@ int		ft_check_line(char *elem, char *line)
 		return (ft_check_tr(line));
 }
 
-int		ft_check_entry(int fd, char *line)
+int		ft_wrongline(char *sms, char **line, char **bowl)
+{
+	if (line)
+		free(*line);
+	if (bowl)
+		free(*bowl);
+	return (ft_puterror(sms, 0));
+}
+
+int		ft_check_entry(int fd, char *line, int r, int a)
 {
 	char	*elem;
-	int		r;
-	int		a;
 	char	**bowl;
+	int		i;
 
-	r = 0;
-	a = 0;
+	i = 1;
 	elem = NULL;
-	while ((bowl = get_next_line(fd, &line)))
+	while ((bowl = get_next_line(fd, &line)) || i--)
 	{
 		elem = ft_check_elem(line);
 		if (elem[0] && elem[0] == 'R')
@@ -80,18 +87,9 @@ int		ft_check_entry(int fd, char *line)
 		if (elem[0] && elem[0] == 'A')
 			a++;
 		if (a > 1 || r > 1)
-		{
-			free(line);
-			return (ft_puterror("Error\ntoo many A or R", 0));
-		}
-		ft_putstr(elem);
-		ft_putchar('\n');
+			return (ft_wrongline("Error\ntoo many A or R", &line, bowl));
 		if (!ft_check_line(elem, line))
-		{
-			free(line);
-			free(*bowl);
-			return (0);
-		}
+			return (ft_wrongline("", &line, bowl));
 	}
 	free(line);
 	return (1);

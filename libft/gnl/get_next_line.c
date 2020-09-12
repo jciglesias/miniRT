@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 13:43:51 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/05 17:20:46 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/12 18:41:17 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ char			**get_next_line(int fd, char **line)
 			bowl = ft_scrapbowl(bowl);
 		if (a == 0)
 			bowl = ft_finalfree(bowl);
-		return (&bowl);
+		return ((bowl) ? &bowl : NULL);
 	}
 	line = NULL;
-	return (&bowl);
+	return (NULL);
 }
