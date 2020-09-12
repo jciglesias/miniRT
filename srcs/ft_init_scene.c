@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:26:35 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/30 23:53:43 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/12 19:20:59 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,11 @@ void	ft_init_double(int i, double *a)
 	while (i)
 		a[--i] = 0.;
 }
-//#include <unistd.h>
+
 void	ft_init_scene(t_scene *scene)
 {
-//	char c;
 	scene->r = 0;
-//	scene->res[0] = 5;
 	ft_init_int(2, scene->res);
-//	c = scene->res[0] + 48;
-//	scene->a = write(1, &c, 1);
 	scene->a = 0;
 	scene->al = 0.;
 	ft_init_int(3, scene->rgb);

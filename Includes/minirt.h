@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 16:57:59 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/12 18:55:35 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/12 20:51:54 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,15 @@ typedef struct		s_scene
 }					t_scene;
 
 void				ft_init_scene(t_scene *scene);
+void				ft_init_int(int i, int *a);
+void				ft_init_double(int i, double *a);
+t_cam				*ft_init_cam(void);
+t_light				*ft_init_l(void);
+t_sphere			*ft_init_sp(void);
+t_plane				*ft_init_pl(void);
+t_square			*ft_init_sq(void);
+t_cylinder			*ft_init_cy(void);
+t_triangle			*ft_init_tr(void);
 void				ft_fill_scene(t_scene *scene, int fd);
 int					ft_check_entry(int fd, char *line, int r, int a);
 int					ft_check_r(char *line);

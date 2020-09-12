@@ -1,0 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init_elements2.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/12 20:01:46 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/09/12 20:10:33 by jiglesia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minirt.h"
+
+void	ft_init_sq(t_square *sq)
+{
+	ft_init_double(3, sq->xyz);
+	ft_init_double(3, sq->vec);
+	sq->side = 0.;
+	ft_init_int(3, sq->rgb);
+	sq->next = NULL;
+}
+
+void	ft_init_cy(t_cylinder *cy)
+{
+	ft_init_double(3, cy->xyz);
+	ft_init_double(3, cy->vec);
+	cy->d = 0.;
+	cy->h = 0.;
+	ft_init_int(3, cy->rgb);
+	cy->next = NULL;
+}
+
+void	ft_init_tr(t_triangle *tr)
+{
+	ft_init_double(9, tr->xyz);
+	ft_init_int(3, tr->rgb);
+	tr->next = NULL;
+}
