@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 16:57:59 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/12 20:51:54 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/09/13 01:13:04 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,19 @@ t_square			*ft_init_sq(void);
 t_cylinder			*ft_init_cy(void);
 t_triangle			*ft_init_tr(void);
 void				ft_fill_scene(t_scene *scene, int fd);
+void				ft_fill_rgb(int *a, char *line);
+void				ft_fill_xyz(double *a, char *line);
+void				ft_fill_r(char *line, t_scene *scene);
+void				ft_fill_a(char *line, t_scene *scene);
+void				ft_fill_c(char *line, t_scene *scene);
+void				ft_fill_l(char *line, t_scene *scene);
+void				ft_fill_sp(char *line, t_scene *scene);
+void				ft_fill_pl(char *line, t_scene *scene);
+void				ft_fill_sq(char *line, t_scene *scene);
+void				ft_fill_cy(char *line, t_scene *scene);
+void				ft_fill_tr(char *line, t_scene *scene);
 int					ft_check_entry(int fd, char *line, int r, int a);
+char				*ft_check_elem(char *line);
 int					ft_check_r(char *line);
 int					ft_check_a(char *line);
 int					ft_check_c(char *line);

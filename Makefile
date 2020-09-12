@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/20 19:19:55 by ciglesia          #+#    #+#              #
-#    Updated: 2020/09/12 20:21:46 by jiglesia         ###   ########.fr        #
+#    Updated: 2020/09/13 01:18:35 by jiglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -35,7 +35,7 @@ DIRSRC		=	./srcs/
 DIRCOMP		=	./srcs/check/
 DIRINTF		=	./srcs/interface/
 
-SRC			=	minirt.c ft_init_scene.c ft_init_elements.c ft_init_elements2.c ft_fill_scene.c ft_strerror.c
+SRC			=	minirt.c ft_init_scene.c ft_init_elements.c ft_init_elements2.c ft_fill_scene.c ft_fill_elements.c ft_fill_figures.c fill_support.c ft_strerror.c
 COMPUTER_S	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
 INTERFACE	=
 
