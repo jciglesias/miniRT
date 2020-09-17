@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   ft_start_render.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 21:04:57 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/13 13:32:26 by jiglesia         ###   ########.fr       */
+/*   Created: 2020/09/13 13:24:11 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/09/13 21:47:59 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argv, char **argc)
+void	ft_check_res(void *mlx, t_scene *scene)
 {
-	t_scene	scene;
-	int		fd;
+	int x;
+	int y;
 
-	if (argv == 2)
-	{
-		if ((fd = open(argc[1], O_RDONLY)) < 1)
-			exit(1);
-		if (!ft_check_entry(fd, NULL, 0, 0))
-		{
-			close(fd);
-			exit(1);
-		}
-		close(fd);
-		if ((fd = open(argc[1], O_RDONLY)) < 1)
-			exit(1);
-		ft_init_scene(&scene);
-		ft_fill_scene(&scene, fd);
-		close(fd);
-		ft_start_render(&scene);
-	}
+	mlx_get_screen_size(mlx, &x, &y);
+	if (scene->res[0] > x)
+		scene->res[0] = x;
+	if (scene->res[1] > y)
+		scene->res[1] = y;
+}
+
+void	ft_start_render(t_scene *scene)
+{
+	void	*mlx;
+	void	*win1;
+
+	if (!(mlx = mlx_init()))
+		exit(1);
+	ft_check_res(mlx, scene);
+	if (!(win1 = mlx_new_window(mlx, scene->res[0], scene->res[1], "win1")))
+		exit(1);
+	mlx_loop(mlx);
 }

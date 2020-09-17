@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   mouse_win.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 21:04:57 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/13 13:32:26 by jiglesia         ###   ########.fr       */
+/*   Created: 2020/09/17 22:59:11 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/09/18 01:32:40 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argv, char **argc)
+int	mouse_win(int button, int x, int y, void *p)
 {
-	t_scene	scene;
-	int		fd;
-
-	if (argv == 2)
-	{
-		if ((fd = open(argc[1], O_RDONLY)) < 1)
-			exit(1);
-		if (!ft_check_entry(fd, NULL, 0, 0))
-		{
-			close(fd);
-			exit(1);
-		}
-		close(fd);
-		if ((fd = open(argc[1], O_RDONLY)) < 1)
-			exit(1);
-		ft_init_scene(&scene);
-		ft_fill_scene(&scene, fd);
-		close(fd);
-		ft_start_render(&scene);
-	}
+	(void)p;
+	(void)x;
+	(void)y;
+	ft_putnbr(button);
+	return (0);
 }
