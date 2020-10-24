@@ -1,1 +1,1 @@
-depo/minirt.o: depo/.././srcs//minirt.c Includes/minirt.h libft/libft.h
+depo/minirt.o: depo/.././src//minirt.c Includes/minirt.h libft/libft.h

@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/20 19:19:55 by ciglesia          #+#    #+#              #
-#    Updated: 2020/09/18 01:29:46 by jiglesia         ###   ########.fr        #
+#    Updated: 2020/10/24 12:02:51 by ciglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,21 +29,25 @@ INCLUDE		=	-I $(INCMLX) -O3 -I $(INCFT) -I $(INC)
 INC_LIB		=	-L$(INCFT) -lft -L$(DIRMLX) -lmlx -lXext -lX11 -lm -lbsd
 
 
-#***************** SRCS ******************#
+#***************** SRC* *******************#
 
-DIRSRC		=	./srcs/
-DIRCOMP		=	./srcs/check/
-DIRINTF		=	./srcs/rendering/
+DIRSRC		=	./src/
+DIRCOMP		=	$(DIRSRC)/check/
+DIRINTF		=	$(DIRSRC)/rendering/
+DIRUTILS	=	$(DIRSRC)/utils/
+DIRLOAD		=	$(DIRSRC)/loading/
 
-SRC			=	minirt.c ft_init_scene.c ft_init_elements.c ft_init_elements2.c ft_fill_scene.c ft_fill_elements.c ft_fill_figures.c fill_support.c ft_strerror.c
-COMPUTER_S	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
-INTERFACE	=	ft_start_render.c ft_load_scene.c mouse_win.c key_win.c
+SRC			=	minirt.c
+CHECKING	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
+RENDERING	=	ft_start_render.c ft_load_scene.c mouse_win.c key_win.c
+UTILS		=	ft_skip.c  ft_strerror.c
+LOADING		=	fill_support.c  ft_fill_elements.c  ft_fill_figures.c  ft_fill_scene.c  ft_init_elements2.c  ft_init_elements.c  ft_init_scene.c
 
 #***************** DEPS ******************#
 
 DIROBJ		=	./depo/
 
-OAUX		=	$(SRC:%=$(DIROBJ)%) $(COMPUTER_S:%=$(DIROBJ)%) $(INTERFACE:%=$(DIROBJ)%)
+OAUX		=	$(SRC:%=$(DIROBJ)%) $(CHECKING:%=$(DIROBJ)%) $(RENDERING:%=$(DIROBJ)%) $(UTILS:%=$(DIROBJ)%) $(LOADING:%=$(DIROBJ)%)
 DEPS		=	$(OAUX:.c=.d)
 OBJS		=	$(OAUX:.c=.o)
 
@@ -71,6 +75,12 @@ ECHO		=	/bin/echo -e
 				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
 
 %.o		:		../$(DIRINTF)/%.c
+				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
+
+%.o		:		../$(DIRUTILS)/%.c
+				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
+
+%.o		:		../$(DIRLOAD)/%.c
 				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
 
 #************************ MAIN COMPILATION *************************
