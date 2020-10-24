@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 16:57:59 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/10/24 13:07:59 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/10/24 17:09:09 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ typedef struct		s_scene
 	int				tr;
 	t_triangle		*triangle;
 	t_layer			*layer;
+	void			*mlx;
+	void			*win;
 }					t_scene;
 
 extern t_scene		scene;
@@ -165,7 +167,7 @@ int					ft_strerror(char *str, int a, char **line);
 void				ft_start_render(void);
 int					key_win(int key, void *p);
 int					mouse_win(int button, int x, int y, void *p);
-void				ft_load_scene(void *mlx, void *win1);
+void				ft_load_scene(void);
 
 
 //int					ft_skip(char *str, char *line);

@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 20:01:46 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/10/24 13:10:42 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/10/24 17:24:42 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ t_layer		*ft_init_layer(void)
 	layer->endian = -1;
 	layer->data = NULL;
 	layer->next = NULL;
+	return (layer);
 }
