@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:26:35 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/12 19:20:59 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/10/24 13:02:49 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	ft_init_scene(t_scene *scene)
 	scene->cylinder = NULL;
 	scene->tr = 0;
 	scene->triangle = NULL;
+	scene->layer = NULL;
 }

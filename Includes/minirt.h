@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 16:57:59 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/18 01:28:27 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/10/24 13:07:59 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,25 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# define	S scene
+# define	PL plane
+# define	L light
+# define	TR triangle
+# define	SQ square
+# define	CY cylinder
+# define	SP sphere
+# define	C cam
+# define	E endian
+
+typedef struct		s_layer
+{
+	void			*img;
+	int				bpp;
+	int				bpl;
+	int				endian;
+	char			*data;
+	struct s_layer	*next;
+}					t_layer;
 
 typedef struct		s_cam
 {
@@ -100,9 +119,12 @@ typedef struct		s_scene
 	t_cylinder		*cylinder;
 	int				tr;
 	t_triangle		*triangle;
+	t_layer			*layer;
 }					t_scene;
 
-void				ft_init_scene(t_scene *scene);
+extern t_scene		scene;
+
+void				ft_init_scene(void);
 void				ft_init_int(int i, int *a);
 void				ft_init_double(int i, double *a);
 t_cam				*ft_init_cam(void);
@@ -112,18 +134,18 @@ t_plane				*ft_init_pl(void);
 t_square			*ft_init_sq(void);
 t_cylinder			*ft_init_cy(void);
 t_triangle			*ft_init_tr(void);
-void				ft_fill_scene(t_scene *scene, int fd);
+void				ft_fill_scene(int fd);
 void				ft_fill_rgb(int *a, char *line);
 void				ft_fill_xyz(double *a, char *line);
-void				ft_fill_r(char *line, t_scene *scene);
-void				ft_fill_a(char *line, t_scene *scene);
-void				ft_fill_c(char *line, t_scene *scene);
-void				ft_fill_l(char *line, t_scene *scene);
-void				ft_fill_sp(char *line, t_scene *scene);
-void				ft_fill_pl(char *line, t_scene *scene);
-void				ft_fill_sq(char *line, t_scene *scene);
-void				ft_fill_cy(char *line, t_scene *scene);
-void				ft_fill_tr(char *line, t_scene *scene);
+void				ft_fill_r(char *line);
+void				ft_fill_a(char *line);
+void				ft_fill_c(char *line);
+void				ft_fill_l(char *line);
+void				ft_fill_sp(char *line);
+void				ft_fill_pl(char *line);
+void				ft_fill_sq(char *line);
+void				ft_fill_cy(char *line);
+void				ft_fill_tr(char *line);
 int					ft_check_entry(int fd, char *line, int r, int a);
 char				*ft_check_elem(char *line);
 int					ft_check_r(char *line);
@@ -140,10 +162,10 @@ int					ft_check_xyz(char *xyz);
 int					ft_check_vec(char *vec);
 int					ft_check_rgb(char *rgb);
 int					ft_strerror(char *str, int a, char **line);
-void				ft_start_render(t_scene *scene);
+void				ft_start_render(void);
 int					key_win(int key, void *p);
 int					mouse_win(int button, int x, int y, void *p);
-void				ft_load_scene(t_scene *scene, void *mlx, void *win1);
+void				ft_load_scene(void *mlx, void *win1);
 
 
 //int					ft_skip(char *str, char *line);
