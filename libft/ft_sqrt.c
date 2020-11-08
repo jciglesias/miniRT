@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 21:04:57 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/08 16:14:09 by jiglesia         ###   ########.fr       */
+/*   Created: 2020/10/27 19:43:03 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/10/27 19:48:53 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-t_scene	scene;
+#include "libft.h"
 
-int	main(int argv, char **argc)
+double	ft_sqrt(double n)
 {
-	int		fd;
+	int		decimals;
+	double	before;
+	double	res;
 
-	if (argv == 2)
+	if (n <= 0)
+		return (0);
+	decimals = 0;
+	res = n / 2;
+	while (decimals != 5)
 	{
-		if ((fd = open(argc[1], O_RDONLY)) < 1)
-			exit(1);
-		if (!ft_check_entry(fd, NULL, 0, 0))
-		{
-			close(fd);
-			exit(1);
-		}
-		close(fd);
-		if ((fd = open(argc[1], O_RDONLY)) < 1)
-			exit(1);
-		ft_init_scene();
-		ft_fill_scene(fd);
-		close(fd);
-		//ft_start_render();
+		before = res;
+		res = (res + n / res) / 2;
+		if ((int)res == (int)before)
+			decimals++;
 	}
+	return (res);
 }

@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   ft_fxysp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 21:04:57 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/08 16:14:09 by jiglesia         ###   ########.fr       */
+/*   Created: 2020/10/27 18:24:04 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/11/01 17:18:54 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-t_scene	scene;
 
-int	main(int argv, char **argc)
+double	ft_fxysp(double *v, double *cam, t_sphere *sp)
 {
-	int		fd;
+	double	dist;
 
-	if (argv == 2)
-	{
-		if ((fd = open(argc[1], O_RDONLY)) < 1)
-			exit(1);
-		if (!ft_check_entry(fd, NULL, 0, 0))
-		{
-			close(fd);
-			exit(1);
-		}
-		close(fd);
-		if ((fd = open(argc[1], O_RDONLY)) < 1)
-			exit(1);
-		ft_init_scene();
-		ft_fill_scene(fd);
-		close(fd);
-		//ft_start_render();
-	}
+	dist = p - o;
+	return (dist);
 }
