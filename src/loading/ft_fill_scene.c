@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 20:37:37 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/10/24 17:23:56 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/08 18:28:04 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,13 @@ void	ft_fill_scene(int fd)
 	line = NULL;
 	while (get_next_line(fd, &line) || i--)
 	{
-		elem = ft_check_elem(line);
-		ft_fill_line(elem, line);
-		free(line);
-		line = NULL;
+		if (line && ft_strlen(line))
+		{
+			elem = ft_check_elem(line);
+			ft_fill_line(elem, line);
+			free(line);
+			line = NULL;
+		}
 	}
 	free(line);
 }

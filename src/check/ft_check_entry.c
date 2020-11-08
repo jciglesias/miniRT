@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:45:47 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/08 17:26:34 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/08 18:14:57 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		ft_check_entry(int fd, char *line, int r, int a)
 	elem = NULL;
 	while ((bowl = get_next_line(fd, &line)) || i--)
 	{
-		if (line)
+		if (line && ft_strlen(line))
 		{
 			elem = ft_check_elem(line);
 			if (elem[0] && elem[0] == 'R')
