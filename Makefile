@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/20 19:19:55 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/08 18:46:32 by user             ###   ########.fr        #
+#    Updated: 2020/11/08 19:00:46 by user             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -37,19 +37,23 @@ DIRINTF		=	$(DIRSRC)/rendering/
 DIRUTILS	=	$(DIRSRC)/utils/
 DIRLOAD		=	$(DIRSRC)/loading/
 DIREVENT	=	$(DIRSRC)/events/
+DIRLASER	=	$(DIRSRC)/lasers/
 
 SRC			=	minirt.c
 CHECKING	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
 RENDERING	=	ft_start_render.c ft_load_scene.c
+LASERS		=
 UTILS		=	ft_skip.c  ft_strerror.c
 EVENTS		=	mouse_win.c key_win.c
 LOADING		=	fill_support.c  ft_fill_elements.c  ft_fill_figures.c  ft_fill_scene.c  ft_init_elements2.c  ft_init_elements.c  ft_init_scene.c
+
+SRCS		=	$(SRC) $(CHECKING) $(RENDERING) $(LASERS) $(UTILS) $(EVENTS) $(LOADING)
 
 #***************** DEPS ******************#
 
 DIROBJ		=	./depo/
 
-OAUX		=	$(SRC:%=$(DIROBJ)%) $(CHECKING:%=$(DIROBJ)%) $(RENDERING:%=$(DIROBJ)%) $(UTILS:%=$(DIROBJ)%) $(LOADING:%=$(DIROBJ)%) $(EVENTS:%=$(DIROBJ)%)
+OAUX		=	$(SRCS:%=$(DIROBJ)%)
 DEPS		=	$(OAUX:.c=.d)
 OBJS		=	$(OAUX:.c=.o)
 
@@ -86,6 +90,9 @@ ECHO		=	/bin/echo -e
 				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
 
 %.o		:		../$(DIREVENT)/%.c
+				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
+
+%.o		:		../$(DIRLASER)/%.c
 				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
 
 #************************ MAIN COMPILATION *************************
