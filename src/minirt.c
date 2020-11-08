@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 21:04:57 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/08 16:14:09 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/08 18:32:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int	main(int argv, char **argc)
 		ft_init_scene();
 		ft_fill_scene(fd);
 		close(fd);
-		//ft_start_render();
+		ft_start_render();
 	}
 }

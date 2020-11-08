@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/20 19:19:55 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/01 16:10:31 by jiglesia         ###   ########.fr        #
+#    Updated: 2020/11/08 18:46:32 by user             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -36,18 +36,20 @@ DIRCOMP		=	$(DIRSRC)/check/
 DIRINTF		=	$(DIRSRC)/rendering/
 DIRUTILS	=	$(DIRSRC)/utils/
 DIRLOAD		=	$(DIRSRC)/loading/
+DIREVENT	=	$(DIRSRC)/events/
 
 SRC			=	minirt.c
 CHECKING	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
-RENDERING	=	ft_start_render.c ft_load_scene.c mouse_win.c key_win.c
+RENDERING	=	ft_start_render.c ft_load_scene.c
 UTILS		=	ft_skip.c  ft_strerror.c
+EVENTS		=	mouse_win.c key_win.c
 LOADING		=	fill_support.c  ft_fill_elements.c  ft_fill_figures.c  ft_fill_scene.c  ft_init_elements2.c  ft_init_elements.c  ft_init_scene.c
 
 #***************** DEPS ******************#
 
 DIROBJ		=	./depo/
 
-OAUX		=	$(SRC:%=$(DIROBJ)%) $(CHECKING:%=$(DIROBJ)%) $(RENDERING:%=$(DIROBJ)%) $(UTILS:%=$(DIROBJ)%) $(LOADING:%=$(DIROBJ)%)
+OAUX		=	$(SRC:%=$(DIROBJ)%) $(CHECKING:%=$(DIROBJ)%) $(RENDERING:%=$(DIROBJ)%) $(UTILS:%=$(DIROBJ)%) $(LOADING:%=$(DIROBJ)%) $(EVENTS:%=$(DIROBJ)%)
 DEPS		=	$(OAUX:.c=.d)
 OBJS		=	$(OAUX:.c=.o)
 
@@ -81,6 +83,9 @@ ECHO		=	/bin/echo -e
 				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
 
 %.o		:		../$(DIRLOAD)/%.c
+				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
+
+%.o		:		../$(DIREVENT)/%.c
 				$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
 
 #************************ MAIN COMPILATION *************************
