@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 16:57:59 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/10/24 23:32:11 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/08 20:34:31 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@
 # define	C cam
 # define	E endian
 
-typedef struct		s_dist
-{
-	double			**mat;
-	struct s_dist	*next;
-}					t_dist;
-
 typedef struct		s_layer
 {
 	void			*img;
@@ -43,7 +37,6 @@ typedef struct		s_layer
 	int				bpl;
 	int				endian;
 	char			*data;
-	struct s_layer	*next;
 }					t_layer;
 
 typedef struct		s_cam
@@ -51,7 +44,8 @@ typedef struct		s_cam
 	double			xyz[3];
 	double			vec[3];
 	int				fov;
-	t_dist			*dist;
+	int				**bmp;
+	t_layer			layer;
 	struct s_cam	*next;
 }					t_cam;
 
@@ -126,7 +120,7 @@ typedef struct		s_scene
 	t_cylinder		*cylinder;
 	int				tr;
 	t_triangle		*triangle;
-	t_layer			*layer;
+	int				lendian;
 	void			*mlx;
 	void			*win;
 }					t_scene;

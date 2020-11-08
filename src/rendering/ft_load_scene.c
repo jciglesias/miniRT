@@ -6,45 +6,47 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/08 16:17:42 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/08 20:37:24 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-/*
-void	ft_distance_fig(t_cam *c)
-{
-	t_sphere	*sp;
-	t_plane		*pl;
-	t_square	*sq;
-	t_cylinder	*cy;
-	t_triangle	*tr;
 
-	sp = S.SP;
-	pl = S.PL;
-	sq = S.SQ;
-	cy = S.CY;
-	tr = S.TR;
-	ft_distance_sp(c, sp);
-	ft_distance_pl(c, pl);
-	ft_distance_sq(c, sq);
-	ft_distance_cy(c, cy);
-	ft_distance_tr(c, tr);
-}
-*/
-void	ft_distance_cam(void)
+void	ft_fill_bmp(t_cam *c, int **bmp)
 {
-	t_cam	*c;
+	int		i;
+	int		j;
 
-	c = S.cam;
-	while (c)
+	i = -1;
+	while (bmp[++i][j])
 	{
-		//ft_distance_fig(c);
-		c = c->next;
+		j = -1;
+		while (bmp[i][++j])
+			if (ft_fxysp(ft_norm(i, j, c), c->xyz, sp))
+				bmp[i][j] = ft_fxysp(ft_norm(i, j, c->xyz), c->xyz, sp);
 	}
+	c->bmp = bmp;
 }
 
 void	ft_load_scene(void)
 {
-	ft_distance_cam();
+	t_cam	*c;
+	int		i;
+	int		j;
+
+	c = S.cam;
+	while (c)
+	{
+		i = 0;
+		ft_mallotrix(c->bmp);
+		while (i < S.res[1])
+		{
+			j = 0;
+			while (j < S.res[0])
+				bmp[i][j++] = 0;
+			i++;
+		}
+		ft_fill_bmp(c, bmp);
+		c = c->next;
+	}
 }
