@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/20 19:19:55 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/08 19:00:46 by user             ###   ########.fr        #
+#    Updated: 2020/11/08 21:02:21 by user             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -41,7 +41,7 @@ DIRLASER	=	$(DIRSRC)/lasers/
 
 SRC			=	minirt.c
 CHECKING	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
-RENDERING	=	ft_start_render.c ft_load_scene.c
+RENDERING	=	ft_start_render.c ft_load_scene.c test_scene.c
 LASERS		=
 UTILS		=	ft_skip.c  ft_strerror.c
 EVENTS		=	mouse_win.c key_win.c

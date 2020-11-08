@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 16:57:59 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/08 20:34:31 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/08 21:01:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,14 @@ int					key_win(int key, void *p);
 int					mouse_win(int button, int x, int y, void *p);
 void				ft_load_scene(void);
 
+int					ft_rgb(unsigned char r, unsigned char g,
+							unsigned char b);
+
+/*
+** testing
+*/
+
+void				test_scene(void);
 
 //int					ft_skip(char *str, char *line);
 #endif
