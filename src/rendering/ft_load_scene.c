@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 13:05:20 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/09 15:32:24 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,11 @@ void	ft_fill_bmp(t_cam *c, int **bmp)
 void	ft_load_scene(void)
 {
 	t_cam	*c;
-	int		i;
-	int		j;
 
 	c = S.cam;
 	while (c)
 	{
-		i = 0;
-		ft_mallotrix(c->bmp);
-		while (i < S.res[1])
-		{
-			j = 0;
-			while (j < S.res[0])
-				c->bmp[i][j++] = 0;
-			i++;
-		}
+		c->bmp = ft_mallotrix(c->bmp);
 		ft_fill_bmp(c, c->bmp);
 		c = c->next;
 	}

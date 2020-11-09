@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 12:57:17 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/09 14:50:35 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ void				ft_start_render(void);
 int					key_win(int key, void *p);
 int					mouse_win(int button, int x, int y, void *p);
 void				ft_load_scene(void);
-void				ft_mallotrix(int **bmp);
+int					**ft_mallotrix(int **bmp);
 int					ft_rgb(unsigned char r, unsigned char g,
 							unsigned char b);
 int					ft_color_sp(double *vec, double *o, double *t);
