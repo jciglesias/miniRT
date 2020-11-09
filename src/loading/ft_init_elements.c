@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 19:41:22 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 14:04:00 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/09 17:40:47 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_cam		*ft_init_cam(void)
 	ft_init_double(3, cam->vec);
 	cam->fov = 0;
 	cam->bmp = NULL;
+	cam->layer = NULL;
 	cam->next = NULL;
 	return (cam);
 }

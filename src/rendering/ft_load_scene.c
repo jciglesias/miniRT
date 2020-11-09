@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 15:32:24 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/09 17:39:18 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void	ft_fill_bmp(t_cam *c, int **bmp)
 	{
 		j = -1;
 		while (++j < S.res[0])
-			bmp[i][j] = ft_gtpxl(ft_primray((double)i, (double)j, c, p), c->xyz);
+		{
+			p = ft_primray((double)i, (double)j, c, p);
+			bmp[i][j] = ft_gtpxl(p , c->xyz);
+		}
 		i++;
 	}
 }
@@ -69,4 +72,5 @@ void	ft_load_scene(void)
 		ft_fill_bmp(c, c->bmp);
 		c = c->next;
 	}
+	ft_plotrt();
 }
