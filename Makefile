@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/20 19:19:55 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/08 19:00:46 by user             ###   ########.fr        #
+#    Updated: 2020/11/09 00:49:17 by jiglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -42,7 +42,7 @@ DIRLASER	=	$(DIRSRC)/lasers/
 SRC			=	minirt.c
 CHECKING	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
 RENDERING	=	ft_start_render.c ft_load_scene.c
-LASERS		=
+LASERS		=	ft_mallotrix.c
 UTILS		=	ft_skip.c  ft_strerror.c
 EVENTS		=	mouse_win.c key_win.c
 LOADING		=	fill_support.c  ft_fill_elements.c  ft_fill_figures.c  ft_fill_scene.c  ft_init_elements2.c  ft_init_elements.c  ft_init_scene.c

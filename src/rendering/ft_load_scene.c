@@ -6,26 +6,66 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/08 20:37:24 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/09 01:01:28 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+int ft_color_sp(double *vec, double *o, double *t);
+int ft_color_pl(double *vec, double *o, double *t);
+int ft_color_sq(double *vec, double *o, double *t);
+int ft_color_cy(double *vec, double *o, double *t);
+int ft_color_tr(double *vec, double *o, double *t);
+double ft_tan(double rad);
+double ft_degtorad(int deg);
+void	ft_camera_to_world(double *p, t_cam *c);
+void	ft_normal(double *p);
+
+double	*ft_primray(double y, double x, t_cam *c, double *p)
+{
+	double	ratio;
+	double	scale;
+
+	scale = ft_tan(ft_degtorad(c->fov * 0.5));
+	ratio = (double)S.res[0] / (double)S.res[1];
+	p[0] = (2 * ((x + 0.5) / (double)S.res[0] - 1) * ratio * scale);
+	p[1] = (1 - 2 * ((y + 0.5) / (double)S.res[1] - 1) * scale);
+	p[2] = -1;
+	ft_camera_to_world(p, c);
+	ft_normal(p);
+	return (p);
+}
+
+int		ft_gtpxl(double *vec, double *o)
+{
+	int		color;
+	double	t;
+
+	color = 0;
+	t = 4000.;
+	color = ft_color_sp(vec, o, &t);
+	color = ft_color_pl(vec, o, &t);
+	color = ft_color_sq(vec, o, &t);
+	color = ft_color_cy(vec, o, &t);
+	color = ft_color_tr(vec, o, &t);
+	return (color);
+}
+
 void	ft_fill_bmp(t_cam *c, int **bmp)
 {
 	int		i;
 	int		j;
+	double	p[3];
 
-	i = -1;
-	while (bmp[++i][j])
+	i = 0;
+	while (i < S.res[1])
 	{
 		j = -1;
-		while (bmp[i][++j])
-			if (ft_fxysp(ft_norm(i, j, c), c->xyz, sp))
-				bmp[i][j] = ft_fxysp(ft_norm(i, j, c->xyz), c->xyz, sp);
+		while (++j < S.res[0])
+			bmp[i][j] = ft_gtpxl(ft_primray((double)i, (double)j, c, p), c->xyz);
+		i++;
 	}
-	c->bmp = bmp;
 }
 
 void	ft_load_scene(void)
@@ -43,10 +83,10 @@ void	ft_load_scene(void)
 		{
 			j = 0;
 			while (j < S.res[0])
-				bmp[i][j++] = 0;
+				c->bmp[i][j++] = 0;
 			i++;
 		}
-		ft_fill_bmp(c, bmp);
+		ft_fill_bmp(c, c->bmp);
 		c = c->next;
 	}
 }
