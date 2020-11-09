@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 17:39:18 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 00:13:08 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	*ft_primray(double y, double x, t_cam *c, double *p)
 	double	ratio;
 	double	scale;
 
-	scale = ft_tan(ft_degtorad(c->fov * 0.5));
+	scale = tan(ft_degtorad(c->fov * 0.5));
 	ratio = (double)S.res[0] / (double)S.res[1];
 	p[0] = (2 * ((x + 0.5) / (double)S.res[0] - 1) * ratio * scale);
 	p[1] = (1 - 2 * ((y + 0.5) / (double)S.res[1] - 1) * scale);
@@ -54,7 +54,7 @@ void	ft_fill_bmp(t_cam *c, int **bmp)
 		j = -1;
 		while (++j < S.res[0])
 		{
-			p = ft_primray((double)i, (double)j, c, p);
+			ft_primray((double)i, (double)j, c, p);
 			bmp[i][j] = ft_gtpxl(p , c->xyz);
 		}
 		i++;
@@ -72,5 +72,5 @@ void	ft_load_scene(void)
 		ft_fill_bmp(c, c->bmp);
 		c = c->next;
 	}
-	ft_plotrt();
+	//ft_plotrt();
 }

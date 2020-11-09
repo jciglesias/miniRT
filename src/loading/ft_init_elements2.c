@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 20:01:46 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 01:02:59 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 00:28:09 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,12 @@ t_triangle	*ft_init_tr(void)
 	return (tr);
 }
 
-t_layer		*ft_init_layer(void)
+t_layer		ft_init_layer(t_layer layer)
 {
-	t_layer	*layer;
-
-	if (!(layer = (t_layer *)malloc(sizeof(t_layer))))
-		return (NULL);
-	layer->img = NULL;
-	layer->bpp = 0;
-	layer->bpl = 0;
-	layer->endian = -1;
-	layer->data = NULL;
+	layer.img = NULL;
+	layer.bpp = 0;
+	layer.bpl = 0;
+	layer.endian = -1;
+	layer.data = NULL;
 	return (layer);
 }

@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 18:51:53 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 00:27:03 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void				ft_init_scene(void);
 void				ft_init_int(int i, int *a);
 void				ft_init_double(int i, double *a);
 t_cam				*ft_init_cam(void);
+t_layer				ft_init_layer(t_layer layer);
 t_light				*ft_init_l(void);
 t_sphere			*ft_init_sp(void);
 t_plane				*ft_init_pl(void);
@@ -182,6 +183,7 @@ double				ft_tan(double rad);
 double				ft_degtorad(int deg);
 void				ft_camera_to_world(double *p, t_cam *c);
 void				ft_normal(double *p);
+double				ft_magnitude(double *p);
 
 /*
 ** testing
