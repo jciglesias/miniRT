@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 01:10:20 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/09 12:57:17 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,15 @@ void				ft_load_scene(void);
 void				ft_mallotrix(int **bmp);
 int					ft_rgb(unsigned char r, unsigned char g,
 							unsigned char b);
+int					ft_color_sp(double *vec, double *o, double *t);
+int					ft_color_pl(double *vec, double *o, double *t);
+int					ft_color_sq(double *vec, double *o, double *t);
+int					ft_color_cy(double *vec, double *o, double *t);
+int					ft_color_tr(double *vec, double *o, double *t);
+double				ft_tan(double rad);
+double				ft_degtorad(int deg);
+void				ft_camera_to_world(double *p, t_cam *c);
+void				ft_normal(double *p);
 
 /*
 ** testing

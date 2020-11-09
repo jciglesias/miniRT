@@ -6,21 +6,11 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 01:01:28 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/09 13:05:20 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-int ft_color_sp(double *vec, double *o, double *t);
-int ft_color_pl(double *vec, double *o, double *t);
-int ft_color_sq(double *vec, double *o, double *t);
-int ft_color_cy(double *vec, double *o, double *t);
-int ft_color_tr(double *vec, double *o, double *t);
-double ft_tan(double rad);
-double ft_degtorad(int deg);
-void	ft_camera_to_world(double *p, t_cam *c);
-void	ft_normal(double *p);
 
 double	*ft_primray(double y, double x, t_cam *c, double *p)
 {

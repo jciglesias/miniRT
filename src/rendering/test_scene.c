@@ -6,7 +6,7 @@
 /*   By: user <ciglesia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:49:52 by user              #+#    #+#             */
-/*   Updated: 2020/11/08 21:27:27 by user             ###   ########.fr       */
+/*   Updated: 2020/11/09 13:45:43 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	set_color_ptr(unsigned char *line, int opp, int endian, int color, int x)
 		}
 }
 
-int	fill_img(unsigned char *data,int bpp,int sl,int w,int h,int endian)
+void	fill_img(unsigned char *data,int bpp,int sl,int w,int h,int endian)
 {
   int	x;
   int	y;
@@ -97,6 +97,6 @@ void	test_scene(void)
 	if (!(imgt = mlx_new_image(S.mlx,S.res[0],S.res[1])))
 		exit(1);
 	data = mlx_get_data_addr(imgt,&bpp,&sl,&endian);
-	fill_img(data,bpp,sl,S.res[0],S.res[1],endian);
+	fill_img((unsigned char *)data,bpp,sl,S.res[0],S.res[1],endian);
 	mlx_put_image_to_window(S.mlx,S.win,imgt,0,0);//posicion de img (0,0)
 }

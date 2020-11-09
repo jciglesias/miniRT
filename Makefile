@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
+#    By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/08/20 19:19:55 by ciglesia          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2020/11/09 00:49:17 by jiglesia         ###   ########.fr        #
-=======
-#    Updated: 2020/11/08 21:02:21 by user             ###   ########.fr        #
->>>>>>> 245c21dd3e08b512158e30a7d89c7937440c673a
+#    Created: 2020/11/09 12:55:34 by jiglesia          #+#    #+#              #
+#    Updated: 2020/11/09 13:05:55 by jiglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -45,14 +41,9 @@ DIRLASER	=	$(DIRSRC)/lasers/
 
 SRC			=	minirt.c
 CHECKING	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
-<<<<<<< HEAD
-RENDERING	=	ft_start_render.c ft_load_scene.c
-LASERS		=	ft_mallotrix.c
-=======
-RENDERING	=	ft_start_render.c ft_load_scene.c test_scene.c
-LASERS		=
->>>>>>> 245c21dd3e08b512158e30a7d89c7937440c673a
-UTILS		=	ft_skip.c  ft_strerror.c
+LASERS		=	ft_mallotrix.c ft_camera_to_world.c
+RENDERING	=	ft_start_render.c ft_load_scene.c test_scene.c ft_color_figures.c
+UTILS		=	ft_skip.c  ft_strerror.c ft_normal.c
 EVENTS		=	mouse_win.c key_win.c
 LOADING		=	fill_support.c  ft_fill_elements.c  ft_fill_figures.c  ft_fill_scene.c  ft_init_elements2.c  ft_init_elements.c  ft_init_scene.c
 
