@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 14:50:35 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/09 18:51:53 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <math.h>
 # define	S scene
 # define	PL plane
 # define	L light
