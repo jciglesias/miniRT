@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 13:33:02 by user             ###   ########.fr       */
+/*   Updated: 2020/11/10 14:32:32 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,12 @@ double				ft_degtorad(int deg);
 void				ft_camera_to_world(double *p, t_cam *c);
 void				ft_normal(double *p);
 double				ft_magnitude(double *p);
+void				ft_dif_vector(double *center, double *o, double *l);
+double				ft_dot_product(double *a, double *b);
+double				ft_t0t1(double t0, double t1);
+int					ft_colorsphere(double *vec, double *o, double *t,
+								   t_sphere *sp);
+
 
 /*
 ** testing

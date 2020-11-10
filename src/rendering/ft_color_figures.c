@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 12:48:15 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 12:52:58 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 13:30:54 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 int	ft_color_sp(double *vec, double *o, double *t)
 {
-	(void)vec;
-	(void)o;
-	(void)t;
-	return (0);
+	int			color;
+	t_sphere	*spx;
+
+	spx = S.SP;
+	color = 0;
+	while (spx)
+	{
+		if (ft_colorsphere(vec, o, t, spx))
+			color = ft_colorsphere(vec, o, t, spx);
+		spx = spx->next;
+	}
+	return (color);
 }
 
 int	ft_color_pl(double *vec, double *o, double *t)

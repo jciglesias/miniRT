@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 13:24:11 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 13:50:02 by user             ###   ########.fr       */
+/*   Updated: 2020/11/10 15:49:08 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	ft_check_res(void)
 	mlx_get_screen_size(S.mlx, &x, &y);
 	if (scene.res[0] > x)
 		scene.res[0] = x;
-	if (scene.res[1] > y)
-		scene.res[1] = y;
+	if (scene.res[1] > y - 60)
+		scene.res[1] = y - 60;
 }
 
 void	ft_start_render(void)

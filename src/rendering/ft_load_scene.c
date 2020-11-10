@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 13:17:35 by user             ###   ########.fr       */
+/*   Updated: 2020/11/10 14:34:39 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int		ft_gtpxl(double *vec, double *o)
 	color = 0;
 	t = 4000.;
 	color = ft_color_sp(vec, o, &t);
-	color = ft_color_pl(vec, o, &t);
+/*	color = ft_color_pl(vec, o, &t);
 	color = ft_color_sq(vec, o, &t);
 	color = ft_color_cy(vec, o, &t);
-	color = ft_color_tr(vec, o, &t);
+	color = ft_color_tr(vec, o, &t);*/
 	return (color);
 }
 
