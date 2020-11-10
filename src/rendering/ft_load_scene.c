@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 14:34:39 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 22:19:01 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_primray(double y, double x, t_cam *c, double *p)
 
 	scale = tan(ft_degtorad(c->fov * 0.5));
 	ratio = (double)S.res[0] / (double)S.res[1];
-	p[0] = (2 * ((x + 0.5) / (double)S.res[0] - 1) * ratio * scale);
-	p[1] = (1 - 2 * ((y + 0.5) / (double)S.res[1] - 1) * scale);
+	p[0] = (2 * (x + 0.5) / (double)S.res[0] - 1) * ratio * scale;
+	p[1] = (1 - 2 * ((y + 0.5) / (double)S.res[1]) * scale);
 	p[2] = -1;
 	ft_camera_to_world(p, c);
 	ft_normal(p);
