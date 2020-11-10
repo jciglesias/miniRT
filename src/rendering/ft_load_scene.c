@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 22:19:01 by jiglesia         ###   ########.fr       */
+/*   Created: 2020/11/10 22:24:14 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/11/10 22:24:16 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,22 @@ void	ft_fill_bmp(t_cam *c, int **bmp)
 void	ft_load_scene(void)
 {
 	t_cam	*c;
+	int		mpos;
+	int		count;
 
+	mpos = 13;
+	mlx_string_put(S.mlx, S.win, 5, mpos, 0xFFFFFF, "Loading Scene...");
+	mpos += 13;
+	mlx_string_put(S.mlx, S.win, 5, mpos, 0xFFFFFF, "Number of Cameras:");
+	mlx_string_put(S.mlx, S.win, 119, mpos, 0x88FFFF, ft_itoa(S.c));
 	c = S.cam;
+	count = 0;
 	while (c)
 	{
+		mpos += 13;
+		count++;
+		mlx_string_put(S.mlx, S.win, 5, mpos, 0xFFFFFF, "Loading Cam");
+		mlx_string_put(S.mlx, S.win, 80, mpos, 0x88FF88, ft_itoa(count));
 		c->bmp = ft_mallotrix(c->bmp);
 		ft_fill_bmp(c, c->bmp);
 		c = c->next;
