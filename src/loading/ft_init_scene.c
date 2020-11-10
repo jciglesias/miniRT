@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 23:26:35 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/09 01:04:10 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 12:26:33 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_init_scene(void)
 	ft_init_int(3, scene.rgb);
 	scene.c = 0;
 	scene.cam = NULL;
+	scene.action_cam = NULL;
 	scene.l = 0;
 	scene.light = NULL;
 	scene.sp = 0;

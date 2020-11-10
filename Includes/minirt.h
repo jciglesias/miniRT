@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 00:27:03 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 12:27:05 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct		s_scene
 	int				rgb[3];
 	int				c;
 	t_cam			*cam;
+	t_cam			*action_cam;
 	int				l;
 	t_light			*light;
 	int				sp;

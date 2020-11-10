@@ -6,13 +6,13 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 00:13:08 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 12:13:17 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	*ft_primray(double y, double x, t_cam *c, double *p)
+void	ft_primray(double y, double x, t_cam *c, double *p)
 {
 	double	ratio;
 	double	scale;
@@ -24,7 +24,6 @@ double	*ft_primray(double y, double x, t_cam *c, double *p)
 	p[2] = -1;
 	ft_camera_to_world(p, c);
 	ft_normal(p);
-	return (p);
 }
 
 int		ft_gtpxl(double *vec, double *o)
