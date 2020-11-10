@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:04:12 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 22:20:32 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 22:28:26 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ double	ft_quadrant(double x, double y, double rad)
 	}
 }
 
-double	ft_movector(double x, double y, double t, double rad)
+double	ft_movector(double x, double t, double rad)
 {
 	double	p;
 	double	radx;
@@ -71,7 +71,7 @@ void	ft_camera_to_world(double *p, t_cam *c)
 	if (hipo)
 		radz = 0 - acos(c->vec[2] / hipo);
 	radz = ft_quadrant(c->vec[2], c->vec[1], radz);
-	p[0] = ft_movector(px[0], px[1], ft_hipo(px[0], px[1]), radx);
-	p[1] = ft_movector(px[1], px[0], ft_hipo(px[0], px[1]), rady);
-	p[2] = ft_movector(px[2], px[1], ft_hipo(px[2], px[1]), radz);
+	p[0] = ft_movector(px[0], ft_hipo(px[0], px[1]), radx);
+	p[1] = ft_movector(px[1], ft_hipo(px[0], px[1]), rady);
+	p[2] = ft_movector(px[2], ft_hipo(px[2], px[1]), radz);
 }
