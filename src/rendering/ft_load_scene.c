@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 14:34:39 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 16:17:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,19 @@ void	ft_fill_bmp(t_cam *c, int **bmp)
 void	ft_load_scene(void)
 {
 	t_cam	*c;
+	int		mpos;
+	int		count;
 
+	mpos = 13;
+	mlx_string_put(S.mlx, S.win, 5, mpos, 0xFFFFFF, "Loading Scene...");
 	c = S.cam;
+	count = 0;
 	while (c)
 	{
+		mpos += 13;
+		count++;
+		mlx_string_put(S.mlx, S.win, 5, mpos, 0xFFFFFF, "Filling Cam");
+		mlx_string_put(S.mlx, S.win, 80, mpos, 0x88FF88, ft_itoa(count));
 		c->bmp = ft_mallotrix(c->bmp);
 		ft_fill_bmp(c, c->bmp);
 		c = c->next;

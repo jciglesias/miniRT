@@ -6,7 +6,7 @@
 /*   By: user <ciglesia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 12:11:46 by user              #+#    #+#             */
-/*   Updated: 2020/11/10 14:45:15 by user             ###   ########.fr       */
+/*   Updated: 2020/11/10 16:08:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,22 @@ void	ft_plotrt(void)
 	t_cam	*cam;
 	t_layer	*l;
 
+	int	color;
+
 	cam = S.cam;
+	color = 0xff99ff;
 	while (cam)
 	{
-		ft_putstr("cam\n");
 		l = &cam->layer;
 		if (!(l->img = mlx_new_image(S.mlx, S.res[0], S.res[1])))
 			exit(1);
 		l->data = mlx_get_data_addr(l->img, &l->bpp, &l->bpl, &l->endian);
+		for (int x = 30; x < 700; x++)
+		{
+			cam->bmp[x][x] = color;
+			color+= 0xff;
+		}
+		color+= 0xff000;
 		fill_img(l, S.res[0], S.res[1], cam->bmp);
 		cam = cam->next;
 	}
