@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_scene.c                                       :+:      :+:    :+:   */
+/*   ft_render_bmp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <ciglesia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 20:49:52 by user              #+#    #+#             */
-/*   Updated: 2020/11/10 13:34:22 by user             ###   ########.fr       */
+/*   Created: 2020/11/10 12:11:46 by user              #+#    #+#             */
+/*   Updated: 2020/11/10 13:51:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-int		in_circle(int x, int y)
-{
-	int radius;
-	int centerx;
-	int centery;
-
-	radius = 300;
-	centerx = S.res[0] / 2;
-	centery = S.res[1] / 2;
-	if (ft_sqrt(((x - centerx)*(x-centerx)) + ((y-centery)*(y-centery))) <= radius)
-		return (1);
-	return (0);
-}
 
 static void	set_color_ptr(unsigned char *line, int opp, int endian, int color, int x)
 {
@@ -50,53 +36,46 @@ static void	set_color_ptr(unsigned char *line, int opp, int endian, int color, i
 		}
 }
 
-static void	fill_img(unsigned char *data,int bpp,int sl,int w,int h,int endian)
+static void	fill_img(t_layer *l, int w, int h, int **bmp)
 {
   int	x;
   int	y;
-  int	opp;
-  //int	dec;
   int	color;
   int	color2;
   unsigned char *ptr;
 
-  opp = bpp/8;
-  printf("(bytes por pixel : %d) ", opp);
-  y = h;
-  int ff = 0;
-  int aa = 0;
-  while (y--)
+  y = 0;
+  while (y < h)
   {
-      ptr = data + y * sl;
-      x = w;
-	  ff = aa;
-      while (x--)
+      ptr = (unsigned char *)l->data + y * l->bpl;
+      x = 0;
+      while (x < w)
 	  {
-		  if (in_circle(x, y))
-			  color = ft_rgb(ff,ff,ff);
-		  else
-			  color = ft_rgb(0,0,0);
+
+		  color = bmp[y][x];
 		  color2 = mlx_get_color_value(S.mlx, color);
-		  set_color_ptr(ptr, opp, endian, color2, x);
-		  if (x%4==0)
-			  ff++;
+		  set_color_ptr(ptr, l->bpp/8, l->endian, color2, x);
+		  x++;
 	  }
-	  if(y%4==0)
-		  aa++;
+	  y++;
   }
 }
 
-void	test_scene(void)
+void	ft_plotrt(void)
 {
-	void	*imgt;
-	char	*data;
-	int		bpp;
-	int		sl;
-	int		endian;
+	t_cam	*cam;
+	t_layer	*l;
 
-	if (!(imgt = mlx_new_image(S.mlx,S.res[0],S.res[1])))
-		exit(1);
-	data = mlx_get_data_addr(imgt,&bpp,&sl,&endian);
-	fill_img((unsigned char *)data,bpp,sl,S.res[0],S.res[1],endian);
-	mlx_put_image_to_window(S.mlx,S.win,imgt,0,0);//posicion de img (0,0)
+	cam = S.cam;
+	while (cam)
+	{
+		l = &cam->layer;
+		if (!(l->img = mlx_new_image(S.mlx, S.res[0], S.res[1])))
+			exit(1);
+		l->data = mlx_get_data_addr(l->img, &l->bpp, &l->bpl, &l->endian);
+		fill_img(l, S.res[0], S.res[1], cam->bmp);
+		cam = cam->next;
+	}
+	mlx_put_image_to_window(S.mlx, S.win, S.cam->layer.img, 0, 0);
+	mlx_string_put(S.mlx, S.win, 5, S.res[1] - 5, 0xFFFFFF, "cam 1");
 }

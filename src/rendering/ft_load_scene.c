@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:52:25 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 12:13:17 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/10 13:17:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ void	ft_load_scene(void)
 		ft_fill_bmp(c, c->bmp);
 		c = c->next;
 	}
-	//ft_plotrt();
+	ft_plotrt();
 }

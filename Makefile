@@ -6,7 +6,7 @@
 #    By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/09 12:55:34 by jiglesia          #+#    #+#              #
-#    Updated: 2020/11/09 13:05:55 by jiglesia         ###   ########.fr        #
+#    Updated: 2020/11/10 13:50:27 by user             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -42,9 +42,9 @@ DIRLASER	=	$(DIRSRC)/lasers/
 SRC			=	minirt.c
 CHECKING	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
 LASERS		=	ft_mallotrix.c ft_camera_to_world.c
-RENDERING	=	ft_start_render.c ft_load_scene.c test_scene.c ft_color_figures.c
+RENDERING	=	ft_start_render.c ft_load_scene.c ft_color_figures.c ft_render_bmp.c
 UTILS		=	ft_skip.c  ft_strerror.c ft_normal.c
-EVENTS		=	mouse_win.c key_win.c
+EVENTS		=	key_win.c
 LOADING		=	fill_support.c  ft_fill_elements.c  ft_fill_figures.c  ft_fill_scene.c  ft_init_elements2.c  ft_init_elements.c  ft_init_scene.c
 
 SRCS		=	$(SRC) $(CHECKING) $(RENDERING) $(LASERS) $(UTILS) $(EVENTS) $(LOADING)
