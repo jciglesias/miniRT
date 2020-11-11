@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 21:45:01 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/11 13:18:22 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,27 @@ int	ft_colorsphere(double *vec, double *o, double *t, t_sphere *sp)
 	{
 		*t = t0;
 		return (ft_rgb(sp->rgb[0], sp->rgb[1], sp->rgb[2]));
+	}
+	return (0);
+}
+
+int	ft_colorplane(double *vec, double *o, double *t, t_plane *pl)
+{
+	double l[3];
+	double denom;
+	double t0;
+
+	t0 = 4000.;
+	denom = ft_dot_product(pl->vec, vec);
+	if (denom > (1 / 1000000))
+	{
+		ft_dif_vector(pl->xyz, o, l);
+		t0 = ft_dot_product(l, pl->vec) / denom;
+	}
+	if (t0 && *t > t0)
+	{
+		*t = t0;
+		return (ft_rgb(pl->rgb[0], pl->rgb[1], pl->rgb[2]));
 	}
 	return (0);
 }
