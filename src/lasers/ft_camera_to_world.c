@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:04:12 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 22:28:26 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/12 23:39:10 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ double	ft_quadrant(double x, double y, double rad)
 	}
 }
 
-double	ft_movector(double x, double t, double rad)
+void	ft_movector(double radx, double rady, double *p)
 {
-	double	p;
-	double	radx;
+	double	px[3];
 
-	radx = acos(x / t);
-	p = cos(radx + rad) * t;
-	return (p);
+	px[0] = p[0] * cos(rady) + p[1] * sin(rady) * sin(radx) + p[2] * sin(rady) * cos(radx);
+	px[1] = p[1] * cos(radx) + p[2] * (-sin(radx));
+	px[2] = p[0] * (-sin(rady)) + p[1] * sin(radx) * cos(rady) + p[2] * cos(radx) * cos(rady);
+	p[0] = px[0];
+	p[1] = px[1];
+	p[2] = px[2];
 }
 
 double	ft_hipo(double a, double b)
@@ -53,10 +55,10 @@ void	ft_camera_to_world(double *p, t_cam *c)
 	double radx;
 	double rady;
 	double radz;
-	double *px;
+	//double *px;
 	double hipo;
 
-	px = p;
+	//px = p;
 	hipo = ft_hipo(c->vec[0], c->vec[1]);
 	radx = 0;
 	if (hipo)
@@ -71,7 +73,7 @@ void	ft_camera_to_world(double *p, t_cam *c)
 	if (hipo)
 		radz = 0 - acos(c->vec[2] / hipo);
 	radz = ft_quadrant(c->vec[2], c->vec[1], radz);
-	p[0] = ft_movector(px[0], ft_hipo(px[0], px[1]), radx);
-	p[1] = ft_movector(px[1], ft_hipo(px[0], px[1]), rady);
-	p[2] = ft_movector(px[2], ft_hipo(px[2], px[1]), radz);
+	ft_movector(radx, rady, p);
+	//p[1] = ft_movector(px[1], ft_hipo(px[0], px[1]), rady);
+	//p[2] = ft_movector(px[2], ft_hipo(px[2], px[1]), radz);
 }

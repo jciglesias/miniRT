@@ -6,11 +6,28 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:57:40 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 14:38:16 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/11 21:44:21 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	ft_magxvec(double *vec, double mag, double *p)
+{
+	int	i;
+	i = -1;
+	while (++i < 3)
+		p[i] = vec[i] * mag;
+}
+
+void	ft_sum_vector(double *center, double *vec, double *p)
+{
+	int i;
+
+	i = -1;
+	while (++i < 3)
+		p[i] = center[i] + vec[i];
+}
 
 void	ft_dif_vector(double *center, double *o, double *l)
 {

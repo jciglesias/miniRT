@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/11 13:18:22 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/11 23:55:08 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,31 @@ int	ft_colorplane(double *vec, double *o, double *t, t_plane *pl)
 	{
 		*t = t0;
 		return (ft_rgb(pl->rgb[0], pl->rgb[1], pl->rgb[2]));
+	}
+	return (0);
+}
+
+int	ft_colorsquare(double *vec, double *o, double *t, t_square *sq)
+{
+	double	t0;
+	double	p[3];
+	double	x;
+	double	y;
+
+	t0 = *t;
+	if (ft_sq_to_pl(vec, o, &t0, sq))
+	{
+		//ft_putstr("square");
+		ft_magxvec(vec, t0, p);
+		ft_sum_vector(o, p, p);
+		ft_dif_vector(p, sq->xyz, p);
+		x = ft_maxx(sq->vec, sq->side / 2) - fabs(p[0]);
+		y = ft_maxy(sq->vec, sq->side / 2) - fabs(p[1]);
+		if (x >= 0 && y >= 0)
+		{
+			*t = t0;
+			return (ft_rgb(sq->rgb[0], sq->rgb[1], sq->rgb[2]));
+		}
 	}
 	return (0);
 }

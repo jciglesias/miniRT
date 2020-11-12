@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 12:48:15 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/11 12:54:04 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/11 21:23:46 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,19 @@ int	ft_color_pl(double *vec, double *o, double *t)
 
 int	ft_color_sq(double *vec, double *o, double *t)
 {
-	(void)vec;
-	(void)o;
-	(void)t;
-	return (0);
+	int			color;
+	int			temp;
+	t_square	*sqx;
+
+	sqx = S.SQ;
+	color = 0;
+	while (sqx)
+	{
+		if ((temp = ft_colorsquare(vec, o, t, sqx)))
+			color = temp;
+		sqx = sqx->next;
+	}
+	return (color);
 }
 
 int	ft_color_cy(double *vec, double *o, double *t)

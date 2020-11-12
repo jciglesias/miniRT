@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/11 13:19:40 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/11 23:47:12 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,17 +192,27 @@ int					ft_color_sq(double *vec, double *o, double *t);
 int					ft_color_cy(double *vec, double *o, double *t);
 int					ft_color_tr(double *vec, double *o, double *t);
 double				ft_tan(double rad);
+double				ft_hipo(double a, double b);
 double				ft_degtorad(int deg);
 void				ft_camera_to_world(double *p, t_cam *c);
 void				ft_normal(double *p);
 double				ft_magnitude(double *p);
 void				ft_dif_vector(double *center, double *o, double *l);
+void				ft_sum_vector(double *center, double *vec, double *p);
 double				ft_dot_product(double *a, double *b);
 double				ft_t0t1(double t0, double t1);
+void				ft_magxvec(double *vec, double magm, double *p);
+double				ft_maxx(double *n, double mag);
+double				ft_maxy(double *n, double mag);
+int					ft_sq_to_pl(double *vec, double *o, double *t,
+								t_square *pl);
 int					ft_colorsphere(double *vec, double *o, double *t,
 								   t_sphere *sp);
 int					ft_colorplane(double *vec, double *o, double *t,
 								   t_plane *pl);
+int					ft_colorsquare(double *vec, double *o, double *t,
+								   t_square *sq);
+
 
 /*
 ** testing
