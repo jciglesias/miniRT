@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:04:12 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/12 23:39:10 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/13 15:49:54 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,26 @@ void	ft_camera_to_world(double *p, t_cam *c)
 {
 	double radx;
 	double rady;
-	double radz;
+	//double radz;
 	//double *px;
 	double hipo;
 
-	//px = p;
+	/*px = p;
 	hipo = ft_hipo(c->vec[0], c->vec[1]);
-	radx = 0;
+	radz = 0;
 	if (hipo)
 		radx = acos(c->vec[0] / hipo);
-	radx = ft_quadrant(c->vec[0], c->vec[1], radx);
+		radz = ft_quadrant(c->vec[0], c->vec[1], radz);*/
+	hipo = ft_hipo(c->vec[0], c->vec[1]);
 	rady = 0;
 	if (hipo)
 		rady = acos(c->vec[1] / hipo);
 	rady = ft_quadrant(c->vec[1], c->vec[0], rady);
 	hipo = ft_hipo(c->vec[2], c->vec[1]);
-	radz = 0;
+	radx = 0;
 	if (hipo)
-		radz = 0 - acos(c->vec[2] / hipo);
-	radz = ft_quadrant(c->vec[2], c->vec[1], radz);
+		radx = acos(c->vec[2] / hipo);
+	radx = ft_quadrant(c->vec[2], c->vec[1], radx);
 	ft_movector(radx, rady, p);
 	//p[1] = ft_movector(px[1], ft_hipo(px[0], px[1]), rady);
 	//p[2] = ft_movector(px[2], ft_hipo(px[2], px[1]), radz);
