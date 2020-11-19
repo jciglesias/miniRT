@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:04:12 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/13 15:49:54 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/19 23:51:39 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,32 @@
 
 double	ft_quadrant(double x, double y, double rad)
 {
-	if (x > 0)
+	if (x >= 0)
 	{
-		if (y > 0)
+		if (y >= 0)
 			return (rad);
 		else
-			return (2 * 3.14159 - rad);
+			return (2 * 3.141593 - rad);
 	}
 	else
 	{
 		if (y > 0)
-			return (3.14159 - rad);
+			return (3.141593 - rad);
 		else
-			return (3.14159 + rad);
+			return (3.141593 + rad);
 	}
 }
 
-void	ft_movector(double radx, double rady, double *p)
+void	ft_movector(double x, double y, double z, double *p)
 {
 	double	px[3];
 
-	px[0] = p[0] * cos(rady) + p[1] * sin(rady) * sin(radx) + p[2] * sin(rady) * cos(radx);
-	px[1] = p[1] * cos(radx) + p[2] * (-sin(radx));
-	px[2] = p[0] * (-sin(rady)) + p[1] * sin(radx) * cos(rady) + p[2] * cos(radx) * cos(rady);
-	p[0] = px[0];
+	px[0] = p[0] * cos(y) * cos(z) + p[1] * (sin(y) * sin(x) * cos(z) - cos(x) * sin(y)) + p[2] * (sin(y) * cos(x) * cos(z) + sin(x) * sin(z));
+	px[1] = p[0] * cos(y) * sin(z) + p[1] * (sin(x) * sin(y) * sin(z) + cos(x) * cos(z)) + p[2] * (cos(x) * sin(y) * sin(z) - sin(x) * cos(z));
+	px[2] = p[0] * (-sin(y)) + p[1] * sin(x) * cos(y) + p[2] * cos(x) * cos(y);
+	p[0] = px[0];// * (-1);
 	p[1] = px[1];
-	p[2] = px[2];
+	p[2] = px[2];// * (-1);
 }
 
 double	ft_hipo(double a, double b)
@@ -50,12 +50,19 @@ double	ft_hipo(double a, double b)
 	return (c);
 }
 
+void	ft_crossp(double *a, double *b, double *p)
+{
+	p[0] = a[1] * b[2] - a[2] * b[1];
+	p[1] = a[2] * b[0] - a[0] * b[2];
+	p[2] = a[0] * b[1] - a[1] * b[0];
+}
+
 void	ft_camera_to_world(double *p, t_cam *c)
 {
 	double radx;
 	double rady;
-	//double radz;
-	//double *px;
+	double z;
+	double x;
 	double hipo;
 
 	/*px = p;
@@ -64,17 +71,28 @@ void	ft_camera_to_world(double *p, t_cam *c)
 	if (hipo)
 		radx = acos(c->vec[0] / hipo);
 		radz = ft_quadrant(c->vec[0], c->vec[1], radz);*/
-	hipo = ft_hipo(c->vec[0], c->vec[1]);
+	x = c->vec[0];
+	z = c->vec[2];
+	if (x < 0)
+		x *= -1;
+	if (z < 0)
+		z *= -1;
+	hipo = ft_hipo(c->vec[0], c->vec[2]);
 	rady = 0;
 	if (hipo)
-		rady = acos(c->vec[1] / hipo);
-	rady = ft_quadrant(c->vec[1], c->vec[0], rady);
+		rady = acos(x / hipo);
+	if (rady)
+		rady = ft_quadrant(c->vec[0], c->vec[2], rady) - (3.141593 * 3 / 2);
+/*	if (c->vec[2] != -1 && x && z)
+	rady -= (3.141593 * 3 / 2);*/
 	hipo = ft_hipo(c->vec[2], c->vec[1]);
 	radx = 0;
 	if (hipo)
-		radx = acos(c->vec[2] / hipo);
-	radx = ft_quadrant(c->vec[2], c->vec[1], radx);
-	ft_movector(radx, rady, p);
-	//p[1] = ft_movector(px[1], ft_hipo(px[0], px[1]), rady);
-	//p[2] = ft_movector(px[2], ft_hipo(px[2], px[1]), radz);
+		radx = acos(z / hipo);
+	radx = ft_quadrant((-1) * c->vec[2], c->vec[1], radx);
+	if (c->vec[1] == -1)
+		radx = -3.141593 / 2;
+	if (c->vec[1] == 1)
+		radx = 3.141593 / 2;
+	ft_movector(radx, rady, 0, p);
 }

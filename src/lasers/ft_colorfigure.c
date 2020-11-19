@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/11 23:55:08 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:40:54 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int	ft_colorsquare(double *vec, double *o, double *t, t_square *sq)
 		ft_magxvec(vec, t0, p);
 		ft_sum_vector(o, p, p);
 		ft_dif_vector(p, sq->xyz, p);
-		x = ft_maxx(sq->vec, sq->side / 2) - fabs(p[0]);
-		y = ft_maxy(sq->vec, sq->side / 2) - fabs(p[1]);
+		x = ft_maxx(sq->vec, sq->side * 3 / 4) - fabs(p[0]);
+		y = ft_maxy(sq->vec, sq->side * 3 / 4) - fabs(p[1]);
 		if (x >= 0 && y >= 0)
 		{
 			*t = t0;

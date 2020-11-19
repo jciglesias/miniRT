@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 21:17:32 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/10/24 17:16:55 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/19 22:40:31 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_fill_c(char *line)
 	new = ft_init_cam();
 	ft_fill_xyz(new->xyz, split[1]);
 	ft_fill_xyz(new->vec, split[2]);
+	ft_normal(new->vec);
 	new->fov = ft_atoi(split[3]);
 	new->next = scene.cam;
 	scene.cam = new;

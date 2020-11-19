@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:24:14 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/12 22:38:33 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/19 19:10:37 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_primray(double y, double x, t_cam *c, double *p)
 	p[0] = (2 * (x + 0.5) / (double)S.res[0] - 1) * ratio * scale;
 	p[1] = (1 - 2 * ((y + 0.5) / (double)S.res[1]) * scale);
 	p[2] = -1;
+	//if (c->vec[2] != -1)
 	ft_camera_to_world(p, c);
 	ft_normal(p);
 }
