@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:04:12 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/19 23:51:39 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/20 12:51:18 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ double	ft_hipo(double a, double b)
 {
 	double c;
 
-	c = ft_sqrt(a * a + b * b);
+	c = sqrt(a * a + b * b);
 	return (c);
 }
 
@@ -65,12 +65,6 @@ void	ft_camera_to_world(double *p, t_cam *c)
 	double x;
 	double hipo;
 
-	/*px = p;
-	hipo = ft_hipo(c->vec[0], c->vec[1]);
-	radz = 0;
-	if (hipo)
-		radx = acos(c->vec[0] / hipo);
-		radz = ft_quadrant(c->vec[0], c->vec[1], radz);*/
 	x = c->vec[0];
 	z = c->vec[2];
 	if (x < 0)
@@ -81,18 +75,12 @@ void	ft_camera_to_world(double *p, t_cam *c)
 	rady = 0;
 	if (hipo)
 		rady = acos(x / hipo);
-	if (rady)
+	if (rady || c->vec[2] == 1)
 		rady = ft_quadrant(c->vec[0], c->vec[2], rady) - (3.141593 * 3 / 2);
-/*	if (c->vec[2] != -1 && x && z)
-	rady -= (3.141593 * 3 / 2);*/
 	hipo = ft_hipo(c->vec[2], c->vec[1]);
 	radx = 0;
 	if (hipo)
 		radx = acos(z / hipo);
 	radx = ft_quadrant((-1) * c->vec[2], c->vec[1], radx);
-	if (c->vec[1] == -1)
-		radx = -3.141593 / 2;
-	if (c->vec[1] == 1)
-		radx = 3.141593 / 2;
 	ft_movector(radx, rady, 0, p);
 }
