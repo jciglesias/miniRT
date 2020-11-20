@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/11 23:47:12 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/20 16:02:54 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ int					ft_color_cy(double *vec, double *o, double *t);
 int					ft_color_tr(double *vec, double *o, double *t);
 double				ft_tan(double rad);
 double				ft_hipo(double a, double b);
-double				ft_degtorad(int deg);
+double				ft_degtorad(double deg);
 void				ft_camera_to_world(double *p, t_cam *c);
 void				ft_normal(double *p);
 double				ft_magnitude(double *p);
