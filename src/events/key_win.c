@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:48:07 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 14:48:33 by user             ###   ########.fr       */
+/*   Updated: 2020/11/21 19:50:32 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	change_cam(int left)
 			cam = S.action_cam->next;
 	}
 	S.action_cam = cam;
-	mlx_put_image_to_window(S.mlx, S.win, S.action_cam->layer.img, 0, 0);//posicion de img (0,0)
+	mlx_put_image_to_window(S.mlx, S.win, S.action_cam->layer.img, 0, 0);
 }
 
 int		key_win(int key, void *p)

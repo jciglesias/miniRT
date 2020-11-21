@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 23:26:35 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 12:26:33 by jiglesia         ###   ########.fr       */
+/*   Created: 2020/11/21 19:51:34 by jiglesia          #+#    #+#             */
+/*   Updated: 2020/11/21 19:51:36 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,27 @@ void	ft_init_double(int i, double *a)
 
 void	ft_init_scene(void)
 {
-	scene.r = 0;
-	ft_init_int(2, scene.res);
-	scene.a = 0;
-	scene.al = 0.;
-	ft_init_int(3, scene.rgb);
-	scene.c = 0;
-	scene.cam = NULL;
-	scene.action_cam = NULL;
-	scene.l = 0;
-	scene.light = NULL;
-	scene.sp = 0;
-	scene.sphere = NULL;
-	scene.pl = 0;
-	scene.plane = NULL;
-	scene.sq = 0;
-	scene.square = NULL;
-	scene.cy = 0;
-	scene.cylinder = NULL;
-	scene.tr = 0;
-	scene.triangle = NULL;
-	scene.lendian = 0;
-	scene.mlx = NULL;
-	scene.win = NULL;
+	S.r = 0;
+	ft_init_int(2, S.res);
+	S.a = 0;
+	S.al = 0.;
+	ft_init_int(3, S.rgb);
+	S.c = 0;
+	S.cam = NULL;
+	S.action_cam = NULL;
+	S.l = 0;
+	S.light = NULL;
+	S.sp = 0;
+	S.sphere = NULL;
+	S.pl = 0;
+	S.plane = NULL;
+	S.sq = 0;
+	S.square = NULL;
+	S.cy = 0;
+	S.cylinder = NULL;
+	S.tr = 0;
+	S.triangle = NULL;
+	S.lendian = 0;
+	S.mlx = NULL;
+	S.win = NULL;
 }

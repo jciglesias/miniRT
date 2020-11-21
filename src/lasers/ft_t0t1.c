@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:57:40 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/11 21:44:21 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 19:00:21 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_magxvec(double *vec, double mag, double *p)
 {
 	int	i;
+
 	i = -1;
 	while (++i < 3)
 		p[i] = vec[i] * mag;

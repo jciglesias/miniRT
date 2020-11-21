@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:00:28 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/20 16:02:11 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 18:59:17 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	ft_normal(double *p)
 {
 	double	mag;
 
-	mag =  ft_magnitude(p);
+	mag = ft_magnitude(p);
 	p[0] /= mag;
 	p[1] /= mag;
 	p[2] /= mag;
 }
 
-double ft_degtorad(double deg)
+double	ft_degtorad(double deg)
 {
 	double	rad;
 

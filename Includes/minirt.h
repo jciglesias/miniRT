@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/21 18:40:00 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 19:57:38 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
-# define	S scene
+# define	S g_scene
 # define	PL plane
 # define	L light
 # define	TR triangle
@@ -30,6 +30,7 @@
 # define	SP sphere
 # define	C cam
 # define	E endian
+# define	U unsigned
 
 typedef struct		s_layer
 {
@@ -127,7 +128,7 @@ typedef struct		s_scene
 	void			*win;
 }					t_scene;
 
-extern t_scene		scene;
+extern t_scene		g_scene;
 
 void				ft_init_scene(void);
 void				ft_init_int(int i, int *a);

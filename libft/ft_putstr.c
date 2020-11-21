@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 19:06:16 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/05 12:11:24 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 19:12:41 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int	ft_putstr(char *str)
 	if (str)
 		while (str[i])
 			ft_putchar(str[i++]);
-	return(i);
+	return (i);
 }

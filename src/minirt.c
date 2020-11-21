@@ -6,12 +6,13 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 21:04:57 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/08 18:32:30 by user             ###   ########.fr       */
+/*   Updated: 2020/11/21 19:16:47 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-t_scene	scene;
+
+t_scene	g_scene;
 
 int	main(int argv, char **argc)
 {

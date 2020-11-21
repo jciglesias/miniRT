@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:24:14 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/20 17:16:52 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 18:58:14 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int		ft_gtpxl(double *vec, double *o)
 	if (t < t0)
 		color = temp;
 	t0 = t;
-/*	temp = ft_color_cy(vec, o, &t);
+	temp = ft_color_cy(vec, o, &t);
 	if (t < t0)
 		color = temp;
-		t0 = t;*/
+	t0 = t;
 	temp = ft_color_tr(vec, o, &t);
 	if (t < t0)
 		color = temp;
@@ -68,7 +68,7 @@ void	ft_fill_bmp(t_cam *c, int **bmp)
 		while (++j < S.res[0])
 		{
 			ft_primray((double)i, (double)j, c, p);
-			bmp[i][j] = ft_gtpxl(p , c->xyz);
+			bmp[i][j] = ft_gtpxl(p, c->xyz);
 		}
 		i++;
 	}

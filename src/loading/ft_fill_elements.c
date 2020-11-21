@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 21:17:32 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/19 22:40:31 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 19:31:46 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_fill_r(char *line)
 	char	**split;
 
 	split = ft_split(line, ' ');
-	scene.r++;
-	scene.res[0] = ft_atoi(split[1]);
-	scene.res[1] = ft_atoi(split[2]);
+	S.r++;
+	S.res[0] = ft_atoi(split[1]);
+	S.res[1] = ft_atoi(split[2]);
 	ft_strerror("", 0, split);
 }
 
@@ -28,9 +28,9 @@ void	ft_fill_a(char *line)
 	char	**split;
 
 	split = ft_split(line, ' ');
-	scene.a++;
-	scene.al = ft_atod(split[1]);
-	ft_fill_rgb(scene.rgb, split[2]);
+	S.a++;
+	S.al = ft_atod(split[1]);
+	ft_fill_rgb(S.rgb, split[2]);
 	ft_strerror("", 0, split);
 }
 
@@ -39,15 +39,15 @@ void	ft_fill_c(char *line)
 	char	**split;
 	t_cam	*new;
 
-	scene.c++;
+	S.c++;
 	split = ft_split(line, ' ');
 	new = ft_init_cam();
 	ft_fill_xyz(new->xyz, split[1]);
 	ft_fill_xyz(new->vec, split[2]);
 	ft_normal(new->vec);
 	new->fov = ft_atoi(split[3]);
-	new->next = scene.cam;
-	scene.cam = new;
+	new->next = S.cam;
+	S.cam = new;
 	ft_strerror("", 0, split);
 }
 
@@ -56,13 +56,13 @@ void	ft_fill_l(char *line)
 	char	**split;
 	t_light	*new;
 
-	scene.l++;
+	S.l++;
 	split = ft_split(line, ' ');
 	new = ft_init_l();
 	ft_fill_xyz(new->xyz, split[1]);
 	new->bri = ft_atod(split[2]);
 	ft_fill_rgb(new->rgb, split[3]);
-	new->next = scene.light;
-	scene.light = new;
+	new->next = S.light;
+	S.light = new;
 	ft_strerror("", 0, split);
 }

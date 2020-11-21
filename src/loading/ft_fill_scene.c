@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 20:37:37 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/10 12:31:27 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 19:33:31 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ void	ft_fill_scene(int fd)
 		}
 	}
 	free(line);
-	scene.action_cam = scene.cam;
+	S.action_cam = S.cam;
 }

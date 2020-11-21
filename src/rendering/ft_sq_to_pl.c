@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 21:33:08 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/20 17:42:52 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 18:55:27 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@ int	ft_sq_to_pl(double *vec, double *o, double *t, t_square *pl)
 
 	t0 = 4000.;
 	denom = ft_dot_product(pl->vec, vec);
-	//if (denom > (1 / 1000000))
-	//{
-		ft_dif_vector(pl->xyz, o, l);
-		t0 = ft_dot_product(l, pl->vec) / denom;
-		//}
+	ft_dif_vector(pl->xyz, o, l);
+	t0 = ft_dot_product(l, pl->vec) / denom;
 	if (t0 && *t > t0)
 	{
 		*t = t0;
