@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/20 16:02:54 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 18:40:00 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,18 +200,25 @@ double				ft_magnitude(double *p);
 void				ft_dif_vector(double *center, double *o, double *l);
 void				ft_sum_vector(double *center, double *vec, double *p);
 double				ft_dot_product(double *a, double *b);
+void				ft_crossp(double *a, double *b, double *p);
 double				ft_t0t1(double t0, double t1);
 void				ft_magxvec(double *vec, double magm, double *p);
 double				ft_maxx(double *n, double mag);
 double				ft_maxy(double *n, double mag);
+int					ft_cmpangles(double x, double y, double *p, t_triangle *tr);
+double				ft_angle(double *a, double *b, double *c);
 int					ft_sq_to_pl(double *vec, double *o, double *t,
 								t_square *pl);
+int					ft_tr_to_pl(double *vec, double *o, double *t,
+								t_triangle *tr);
 int					ft_colorsphere(double *vec, double *o, double *t,
 								   t_sphere *sp);
 int					ft_colorplane(double *vec, double *o, double *t,
 								   t_plane *pl);
 int					ft_colorsquare(double *vec, double *o, double *t,
 								   t_square *sq);
+int					ft_colortriangle(double *vec, double *o, double *t,
+								   t_triangle *tr);
 
 
 /*

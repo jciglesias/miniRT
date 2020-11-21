@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 12:48:15 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/11 21:23:46 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/20 17:57:23 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,17 @@ int	ft_color_cy(double *vec, double *o, double *t)
 
 int	ft_color_tr(double *vec, double *o, double *t)
 {
-	(void)vec;
-	(void)o;
-	(void)t;
-	return (0);
+	int			color;
+	int			temp;
+	t_triangle	*trx;
+
+	trx = S.TR;
+	color = 0;
+	while (trx)
+	{
+		if ((temp = ft_colortriangle(vec, o, t, trx)))
+			color = temp;
+		trx = trx->next;
+	}
+	return (color);
 }

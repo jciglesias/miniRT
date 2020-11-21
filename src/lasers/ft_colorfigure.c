@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/17 19:40:54 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/21 18:37:53 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	ft_colorsquare(double *vec, double *o, double *t, t_square *sq)
 	t0 = *t;
 	if (ft_sq_to_pl(vec, o, &t0, sq))
 	{
-		//ft_putstr("square");
 		ft_magxvec(vec, t0, p);
 		ft_sum_vector(o, p, p);
 		ft_dif_vector(p, sq->xyz, p);
@@ -78,6 +77,29 @@ int	ft_colorsquare(double *vec, double *o, double *t, t_square *sq)
 		{
 			*t = t0;
 			return (ft_rgb(sq->rgb[0], sq->rgb[1], sq->rgb[2]));
+		}
+	}
+	return (0);
+}
+
+int	ft_colortriangle(double *vec, double *o, double *t, t_triangle *tr)
+{
+	double	t0;
+	double	p[3];
+	double	x;
+	double	y;
+
+	t0 = *t;
+	if (ft_tr_to_pl(vec, o, &t0, tr))
+	{
+		ft_magxvec(vec, t0, p);
+		ft_sum_vector(o, p, p);
+		x = ft_angle(tr->xyz, &(tr->xyz[3]), &(tr->xyz[6]));
+		y = ft_angle(tr->xyz, &(tr->xyz[6]), &(tr->xyz[3]));
+		if (ft_cmpangles(x, y, p, tr))
+		{
+			*t = t0;
+			return (ft_rgb(tr->rgb[0], tr->rgb[1], tr->rgb[2]));
 		}
 	}
 	return (0);
