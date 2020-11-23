@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/21 18:37:53 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/24 00:43:29 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,30 @@ int	ft_colortriangle(double *vec, double *o, double *t, t_triangle *tr)
 		}
 	}
 	return (0);
+}
+
+int	ft_colorcylinder(double *vec, double *o, double *t, t_cylinder *cy)
+{
+	double	t0;
+	double	p0[3];
+	double	a;
+	double	b;
+	double	delta;
+
+	ft_dif_vector(o, cy->xyz, p0);
+	a = pow(vec[0], 2) + pow(vec[2], 2);
+	b = vec[0] * p0[0] + vec[2] * p0[2];
+	delta = b * b - a * (pow(p0[0], 2) + pow(p0[2], 2) - pow(cy->d / 2, 2));
+	if (delta < 0.00000001)
+		return (0);
+	t0 = (-b - sqrt(delta)) / a;
+	if (t0 < 0.00000001)
+		return (0);
+/*	a = p0[1] + t0 * vec[1];
+	if (a > cy->h || a < 0)
+	{
+		a = ft_intersect_base(vec, cy->xyz - cy->h, &t0);
+		}*/
+	*t = t0;
+	return (ft_rgb(cy->rgb[0], cy->rgb[1], cy->rgb[2]));
 }

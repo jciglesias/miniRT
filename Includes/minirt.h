@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/21 19:57:38 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/11/23 19:54:23 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,8 @@ int					ft_colorsquare(double *vec, double *o, double *t,
 								   t_square *sq);
 int					ft_colortriangle(double *vec, double *o, double *t,
 								   t_triangle *tr);
+int					ft_colorcylinder(double *vec, double *o, double *t,
+								   t_cylinder *cy);
 
 
 /*
