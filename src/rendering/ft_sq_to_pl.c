@@ -6,13 +6,13 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 21:33:08 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/21 18:55:27 by jiglesia         ###   ########.fr       */
+/*   Updated: 2020/12/11 19:53:55 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	ft_sq_to_pl(double *vec, double *o, double *t, t_square *pl)
+int		ft_sq_to_pl(double *vec, double *o, double *t, t_square *pl)
 {
 	double l[3];
 	double denom;
@@ -30,7 +30,21 @@ int	ft_sq_to_pl(double *vec, double *o, double *t, t_square *pl)
 	return (0);
 }
 
-int	ft_tr_to_pl(double *vec, double *o, double *t, t_triangle *tr)
+double	ft_cy_to_pl(double *vec, double *o, double *c, double *n)
+{
+	double l[3];
+	double denom;
+	double t0;
+
+	denom = ft_dot_product(n, vec);
+	ft_dif_vector(c, o, l);
+	t0 = ft_dot_product(l, n) / denom;
+	if (t0 && 4000 > t0)
+		return (t0);
+	return (0);
+}
+
+int		ft_tr_to_pl(double *vec, double *o, double *t, t_triangle *tr)
 {
 	double l[3];
 	double denom;
