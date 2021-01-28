@@ -6,93 +6,68 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 12:48:15 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/22 16:58:48 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/01/13 00:26:57 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	ft_color_sp(double *vec, double *o, double *t)
+void	ft_color_sp(t_pix *pix)
 {
-	int			color;
-	int			temp;
 	t_sphere	*spx;
 
 	spx = S.SP;
-	color = 0;
 	while (spx)
 	{
-		if ((temp = ft_colorsphere(vec, o, t, spx)))
-			color = temp;
+		ft_colorsphere(pix, spx);
 		spx = spx->next;
 	}
-	return (color);
 }
 
-int	ft_color_pl(double *vec, double *o, double *t)
+void	ft_color_pl(t_pix *pix)
 {
-	int		color;
-	int		temp;
 	t_plane	*plx;
 
 	plx = S.PL;
-	color = 0;
 	while (plx)
 	{
-		if ((temp = ft_colorplane(vec, o, t, plx)))
-			color = temp;
+		ft_colorplane(pix, plx);
 		plx = plx->next;
 	}
-	return (color);
 }
 
-int	ft_color_sq(double *vec, double *o, double *t)
+void	ft_color_sq(t_pix *pix)
 {
-	int			color;
-	int			temp;
 	t_square	*sqx;
 
 	sqx = S.SQ;
-	color = 0;
 	while (sqx)
 	{
-		if ((temp = ft_colorsquare(vec, o, t, sqx)))
-			color = temp;
+		ft_colorsquare(pix, sqx);
 		sqx = sqx->next;
 	}
-	return (color);
 }
 
-int	ft_color_cy(double *vec, double *o, double *t)
+void	ft_color_cy(t_pix *pix)
 {
-	int			color;
-	int			temp;
 	t_cylinder	*cyx;
 
 	cyx = S.CY;
-	color = 0;
 	while (cyx)
 	{
-		if ((temp = ft_colorcylinder(vec, o, t, cyx)))
-			color = temp;
+		ft_colorcylinder(pix, cyx);
 		cyx = cyx->next;
 	}
-	return (color);
 }
 
-int	ft_color_tr(double *vec, double *o, double *t)
+void	ft_color_tr(t_pix *pix)
 {
-	int			color;
-	int			temp;
 	t_triangle	*trx;
 
 	trx = S.TR;
-	color = 0;
 	while (trx)
 	{
-		if ((temp = ft_colortriangle(vec, o, t, trx)))
-			color = temp;
+		ft_colortriangle(pix, trx);
 		trx = trx->next;
 	}
-	return (color);
 }

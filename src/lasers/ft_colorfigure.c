@@ -6,13 +6,13 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/12/11 18:26:05 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/01/28 14:14:30 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	ft_colorsphere(double *vec, double *o, double *t, t_sphere *sp)
+void	ft_colorsphere(t_pix *pix, t_sphere *sp)
 {
 	double l[3];
 	double tca;
@@ -20,107 +20,109 @@ int	ft_colorsphere(double *vec, double *o, double *t, t_sphere *sp)
 	double thc;
 	double t0;
 
-	ft_dif_vector(sp->xyz, o, l);
-	tca = ft_dot_product(l, vec);
+	ft_dif_vector(sp->xyz, pix->o, l);
+	tca = ft_dot_product(l, pix->vec);
 	if (tca < 0)
-		return (0);
+		return ;
 	d2 = ft_dot_product(l, l) - tca * tca;
 	if (d2 > (sp->d * sp->d / 4))
-		return (0);
+		return ;
 	thc = ft_sqrt((sp->d * sp->d / 4) - d2);
 	t0 = ft_t0t1(tca - thc, tca + thc);
-	if (t0 && *t > t0)
+	if (t0 && pix->t > t0)
 	{
-		*t = t0;
-		return (ft_rgb(sp->rgb[0], sp->rgb[1], sp->rgb[2]));
+		pix->t = t0;
+		ft_sphere_normal(sp->xyz, pix->o, pix->vec, t0);
+		ft_cpyrgb(sp->rgb, pix->color);
 	}
-	return (0);
 }
 
-int	ft_colorplane(double *vec, double *o, double *t, t_plane *pl)
+void	ft_colorplane(t_pix *pix, t_plane *pl)
 {
 	double l[3];
 	double denom;
 	double t0;
 
 	t0 = 4000.;
-	denom = ft_dot_product(pl->vec, vec);
+	denom = ft_dot_product(pl->vec, pix->vec);
 	if (denom > (1 / 1000000))
 	{
-		ft_dif_vector(pl->xyz, o, l);
+		ft_dif_vector(pl->xyz, pix->o, l);
 		t0 = ft_dot_product(l, pl->vec) / denom;
 	}
-	if (t0 && *t > t0)
+	if (t0 && pix->t > t0)
 	{
-		*t = t0;
-		return (ft_rgb(pl->rgb[0], pl->rgb[1], pl->rgb[2]));
+		pix->t = t0;
+		ft_veccpy(pl->vec, S.normal);
+		ft_cpyrgb(pl->rgb, pix->color);
 	}
-	return (0);
 }
 
-int	ft_colorsquare(double *vec, double *o, double *t, t_square *sq)
+void	ft_colorsquare(t_pix *pix, t_square *sq)
 {
 	double	t0;
 	double	p[3];
 	double	x;
 	double	y;
 
-	t0 = *t;
-	if (ft_sq_to_pl(vec, o, &t0, sq))
+	t0 = pix->t;
+	if (ft_sq_to_pl(pix->vec, pix->o, &t0, sq))
 	{
-		ft_magxvec(vec, t0, p);
-		ft_sum_vector(o, p, p);
+		ft_magxvec(pix->vec, t0, p);
+		ft_sum_vector(pix->o, p, p);
 		ft_dif_vector(p, sq->xyz, p);
 		x = ft_maxx(sq->vec, sq->side * 3 / 4) - fabs(p[0]);
 		y = ft_maxy(sq->vec, sq->side * 3 / 4) - fabs(p[1]);
 		if (x >= 0 && y >= 0)
 		{
-			*t = t0;
-			return (ft_rgb(sq->rgb[0], sq->rgb[1], sq->rgb[2]));
+			pix->t = t0;
+			ft_veccpy(sq->vec, S.normal);
+			ft_cpyrgb(sq->rgb, pix->color);
 		}
 	}
-	return (0);
 }
 
-int	ft_colortriangle(double *vec, double *o, double *t, t_triangle *tr)
+void	ft_colortriangle(t_pix *pix, t_triangle *tr)
 {
 	double	t0;
 	double	p[3];
 	double	x;
 	double	y;
 
-	t0 = *t;
-	if (ft_tr_to_pl(vec, o, &t0, tr))
+	t0 = pix->t;
+	if (ft_tr_to_pl(pix->vec, pix->o, &t0, tr))
 	{
-		ft_magxvec(vec, t0, p);
-		ft_sum_vector(o, p, p);
+		ft_magxvec(pix->vec, t0, p);
+		ft_sum_vector(pix->o, p, p);
 		x = ft_angle(tr->xyz, &(tr->xyz[3]), &(tr->xyz[6]));
 		y = ft_angle(tr->xyz, &(tr->xyz[6]), &(tr->xyz[3]));
 		if (ft_cmpangles(x, y, p, tr))
 		{
-			*t = t0;
-			return (ft_rgb(tr->rgb[0], tr->rgb[1], tr->rgb[2]));
+			pix->t = t0;
+			ft_trnormal(tr->xyz, &(tr->xyz[3]), &(tr->xyz[6]));
+			ft_cpyrgb(tr->rgb, pix->color);
 		}
 	}
-	return (0);
 }
 
-int	ft_colorcylinder(double *vec, double *o, double *t, t_cylinder *cy)
+void	ft_colorcylinder(t_pix *pix, t_cylinder *cy)
 {
 	double	a;
 	double	b;
 
-	a = ft_infinit_cy(vec, o, cy);
-	b = ft_caps(vec, o, cy);
-	if (a < *t || b < *t)
+	a = ft_infinit_cy(pix->vec, pix->o, cy);
+	b = ft_caps(pix->vec, pix->o, cy);
+	if (a < pix->t || b < pix->t)
 	{
 		if (a < b)
 		{
-			*t = a;
-			return (ft_rgb(cy->rgb[0], cy->rgb[1], cy->rgb[2]));
+			pix->t = a;
+			//ft_cy_normal(pix, cy);
+			ft_cpyrgb(cy->rgb, pix->color);
+			return ;
 		}
-		*t = b;
-		return (ft_rgb(cy->rgb[0], cy->rgb[1], cy->rgb[2]));
+		pix->t = b;
+		//ft_cy_normal(pix, cy);
+		ft_cpyrgb(cy->rgb, pix->color);
 	}
-	return (0);
 }

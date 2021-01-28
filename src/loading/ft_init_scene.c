@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 19:51:34 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/21 19:51:36 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:17:58 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ void	ft_init_scene(void)
 	S.lendian = 0;
 	S.mlx = NULL;
 	S.win = NULL;
+	ft_init_double(3, S.normal);
 }

@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/12/11 20:51:40 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/01/28 14:19:59 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define	SP sphere
 # define	C cam
 # define	E endian
-# define	U unsigned
 
 typedef struct		s_layer
 {
@@ -101,6 +100,14 @@ typedef struct		s_tri
 	struct s_tri	*next;
 }					t_triangle;
 
+typedef struct		s_pix
+{
+	double			t;
+	double			vec[3];
+	double			o[3];
+	int				color[3];
+}					t_pix;
+
 typedef struct		s_scene
 {
 	int				r;
@@ -126,6 +133,8 @@ typedef struct		s_scene
 	int				lendian;
 	void			*mlx;
 	void			*win;
+	double			normal[3];
+	t_pix			pix;
 }					t_scene;
 
 extern t_scene		g_scene;
@@ -187,11 +196,11 @@ void				ft_plotrt(void);
 int					**ft_mallotrix(int **bmp);
 int					ft_rgb(unsigned char r, unsigned char g,
 							unsigned char b);
-int					ft_color_sp(double *vec, double *o, double *t);
-int					ft_color_pl(double *vec, double *o, double *t);
-int					ft_color_sq(double *vec, double *o, double *t);
-int					ft_color_cy(double *vec, double *o, double *t);
-int					ft_color_tr(double *vec, double *o, double *t);
+void				ft_color_sp(t_pix *pix);
+void				ft_color_pl(t_pix *pix);
+void				ft_color_sq(t_pix *pix);
+void				ft_color_cy(t_pix *pix);
+void				ft_color_tr(t_pix *pix);
 double				ft_tan(double rad);
 double				ft_hipo(double a, double b);
 double				ft_quadrant(double x, double y, double rad);
@@ -204,8 +213,10 @@ void				ft_sum_vector(double *center, double *vec, double *p);
 double				ft_dot_product(double *a, double *b);
 void				ft_crossp(double *a, double *b, double *p);
 void				ft_veccpy(double *a, double *b);
+void				ft_cpyrgb(int *a, int *b);
 double				ft_t0t1(double t0, double t1);
 void				ft_magxvec(double *vec, double magm, double *p);
+double				ft_distance(double *a, double *b);
 double				ft_maxx(double *n, double mag);
 double				ft_maxy(double *n, double mag);
 int					ft_cmpangles(double x, double y, double *p, t_triangle *tr);
@@ -226,16 +237,14 @@ void				ft_movecy(double *ray, t_cylinder *cy, double *vec,
 							  double *o);
 double				ft_infinit_cy(double *vec, double *o, t_cylinder *cy);
 double				ft_caps(double *vec, double *o, t_cylinder *cy);
-int					ft_colorsphere(double *vec, double *o, double *t,
-								   t_sphere *sp);
-int					ft_colorplane(double *vec, double *o, double *t,
-								   t_plane *pl);
-int					ft_colorsquare(double *vec, double *o, double *t,
-								   t_square *sq);
-int					ft_colortriangle(double *vec, double *o, double *t,
-								   t_triangle *tr);
-int					ft_colorcylinder(double *vec, double *o, double *t,
-								   t_cylinder *cy);
+void				ft_colorsphere(t_pix *pix, t_sphere *sp);
+void				ft_colorplane(t_pix *pix, t_plane *pl);
+void				ft_colorsquare(t_pix *pix, t_square *sq);
+void				ft_colortriangle(t_pix *pix, t_triangle *tr);
+void				ft_colorcylinder(t_pix *pix, t_cylinder *cy);
+void				ft_back_trace(t_pix *pix);
+void				ft_sphere_normal(double *c, double *o, double *v, double t);
+void				ft_trnormal(double *a, double *b, double *c);
 
 
 /*

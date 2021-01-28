@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:24:14 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/21 18:58:14 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/01/28 14:20:57 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,17 @@ void	ft_primray(double y, double x, t_cam *c, double *p)
 	ft_normal(p);
 }
 
-int		ft_gtpxl(double *vec, double *o)
+int		ft_gtpxl(t_pix pix)
 {
-	int		color;
-	int		temp;
-	double	t;
-	double	t0;
-
-	color = 0;
-	t = 4000.;
-	color = ft_color_sp(vec, o, &t);
-	t0 = t;
-	temp = ft_color_pl(vec, o, &t);
-	if (t < t0)
-		color = temp;
-	t0 = t;
-	temp = ft_color_sq(vec, o, &t);
-	if (t < t0)
-		color = temp;
-	t0 = t;
-	temp = ft_color_cy(vec, o, &t);
-	if (t < t0)
-		color = temp;
-	t0 = t;
-	temp = ft_color_tr(vec, o, &t);
-	if (t < t0)
-		color = temp;
-	return (color);
+	ft_init_int(3, pix.color);
+	pix.t = 4000.;
+	ft_color_sp(&pix);
+	ft_color_pl(&pix);
+	ft_color_sq(&pix);
+	ft_color_cy(&pix);
+	ft_color_tr(&pix);
+	ft_back_trace(&pix);
+	return (ft_rgb(pix.color[0], pix.color[1], pix.color[2]));
 }
 
 void	ft_fill_bmp(t_cam *c, int **bmp)
@@ -68,7 +52,9 @@ void	ft_fill_bmp(t_cam *c, int **bmp)
 		while (++j < S.res[0])
 		{
 			ft_primray((double)i, (double)j, c, p);
-			bmp[i][j] = ft_gtpxl(p, c->xyz);
+			ft_veccpy(p, S.pix.vec);
+			ft_veccpy(c->xyz, S.pix.o);
+			bmp[i][j] = ft_gtpxl(S.pix);
 		}
 		i++;
 	}
