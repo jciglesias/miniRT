@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 20:27:39 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/12/12 01:32:20 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/03 18:30:18 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,12 @@ double	ft_infinit_cy(double *vec, double *o, t_cylinder *cy)
 	if (!((d1 >= 0 && d1 <= cy->h && t[0] > 0) || (d2 >= 0 && d2 <= cy->h
 												&& t[0] > 0)))
 		return (4000);
-	return (ft_t0t1(t[0], t[1]));
+	if ((d1 >= 0 && d1 <= cy->h	&& t[0] > 0) && (d2 >= 0 && d2 <= cy->h && t[1] > 0))
+		return (ft_t0t1(t[0], t[1]));
+	else if (d1 >= 0 && d1 <= cy->h && t[0] > 0)
+		return (t[0]);
+	else
+		return (t[1]);
 }
 
 double	ft_distance(double *a, double *b)
@@ -80,12 +85,12 @@ double	ft_caps(double *vec, double *o, t_cylinder *cy)
 	double c[3];
 
 	ft_magxvec(cy->vec, cy->h, c);
-	ft_sum_vector(cy->xyz, c,c);
+	ft_sum_vector(cy->xyz, c, c);
 	d1 = ft_cy_to_pl(vec, o, cy->xyz, cy->vec);
 	d2 = ft_cy_to_pl(vec, o, c, cy->vec);
 	if (d1 < 4000 || d2 < 4000)
 	{
-		ft_magxvec( vec, d1, p1);
+		ft_magxvec(vec, d1, p1);
 		ft_sum_vector(o, p1, p1);
 		ft_magxvec(vec, d2, p2);
 		ft_sum_vector(o, p2, p2);
@@ -96,6 +101,7 @@ double	ft_caps(double *vec, double *o, t_cylinder *cy)
 			return (d1);
 		else if (d2 < 4000 && ft_distance(p2, c) <= (cy->d / 2))
 			return (d2);
+		//return (ft_t0t1(d1, d2));
 		return (4000);
 	}
 	return (4000);

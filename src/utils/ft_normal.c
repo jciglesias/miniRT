@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:00:28 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/01/28 20:13:53 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/02 18:38:56 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,25 @@ void	ft_trnormal(double *a, double *b, double *c)
 	ft_dif_vector(c, b, difc);
 	ft_crossp(difa, difc, S.normal);
 	ft_normal(S.normal);
+}
+
+void	ft_cy_normal(t_pix *pix, t_cylinder *cy)
+{
+	double	dist;
+	double	v[3];
+	double	d[3];
+
+	ft_dif_vector(cy->xyz, pix->o, v);
+	ft_magxvec(pix->vec, pix->t, d);
+	ft_dif_vector(d, v, v);
+	dist = ft_dot_product(cy->vec, v);
+	ft_magxvec(pix->vec, pix->t, v);
+	ft_magxvec(cy->vec, dist, d);
+	ft_dif_vector(v, d, v);
+	ft_dif_vector(cy->xyz, pix->o, d);
+	ft_dif_vector(v, d, v);
+	ft_normal(v);
+	ft_veccpy(v, S.normal);
 }
 
 void	ft_cpyrgb(int *rgb, int *color)

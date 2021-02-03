@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/01/28 14:19:59 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/02 18:38:11 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,7 @@ void				ft_crossp(double *a, double *b, double *p);
 void				ft_veccpy(double *a, double *b);
 void				ft_cpyrgb(int *a, int *b);
 double				ft_t0t1(double t0, double t1);
-void				ft_magxvec(double *vec, double magm, double *p);
+void				ft_magxvec(double *vec, double mag, double *p);
 double				ft_distance(double *a, double *b);
 double				ft_maxx(double *n, double mag);
 double				ft_maxy(double *n, double mag);
@@ -245,6 +245,7 @@ void				ft_colorcylinder(t_pix *pix, t_cylinder *cy);
 void				ft_back_trace(t_pix *pix);
 void				ft_sphere_normal(double *c, double *o, double *v, double t);
 void				ft_trnormal(double *a, double *b, double *c);
+void				ft_cy_normal(t_pix *pix, t_cylinder *cy);
 
 
 /*

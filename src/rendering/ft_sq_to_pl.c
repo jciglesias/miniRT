@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 21:33:08 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/12/11 19:53:55 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/03 16:34:58 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ double	ft_cy_to_pl(double *vec, double *o, double *c, double *n)
 	t0 = ft_dot_product(l, n) / denom;
 	if (t0 && 4000 > t0)
 		return (t0);
-	return (0);
+	return (4000);
 }
 
 int		ft_tr_to_pl(double *vec, double *o, double *t, t_triangle *tr)

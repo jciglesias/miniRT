@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/01/28 14:14:30 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/03 18:37:12 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,15 +114,15 @@ void	ft_colorcylinder(t_pix *pix, t_cylinder *cy)
 	b = ft_caps(pix->vec, pix->o, cy);
 	if (a < pix->t || b < pix->t)
 	{
-		if (a < b)
+		if (b < a)
 		{
-			pix->t = a;
-			//ft_cy_normal(pix, cy);
+			pix->t = b;
+			ft_veccpy(cy->vec, S.normal);
 			ft_cpyrgb(cy->rgb, pix->color);
 			return ;
 		}
-		pix->t = b;
-		//ft_cy_normal(pix, cy);
+		pix->t = a;
+		ft_cy_normal(pix, cy);
 		ft_cpyrgb(cy->rgb, pix->color);
 	}
 }
