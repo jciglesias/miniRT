@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/03 18:37:12 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/09 17:44:19 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,25 @@ void	ft_colorsphere(t_pix *pix, t_sphere *sp)
 	}
 }
 
+void	ft_normal_plane(double *v, t_pix *pix)
+{
+	double temp[3];
+	double nv;
+
+	temp[0] = -pix->vec[0];
+	temp[1] = -pix->vec[1];
+	temp[2] = -pix->vec[2];
+	nv = ft_dot_product(v, temp);
+	if (nv < 0)
+	{
+		S.normal[0] = -v[0];
+		S.normal[1] = -v[1];
+		S.normal[2] = -v[2];
+	}
+	else
+		ft_veccpy(v, S.normal);
+}
+
 void	ft_colorplane(t_pix *pix, t_plane *pl)
 {
 	double l[3];
@@ -53,7 +72,7 @@ void	ft_colorplane(t_pix *pix, t_plane *pl)
 	if (t0 && pix->t > t0)
 	{
 		pix->t = t0;
-		ft_veccpy(pl->vec, S.normal);
+		ft_normal_plane(pl->vec, pix);
 		ft_cpyrgb(pl->rgb, pix->color);
 	}
 }
@@ -76,7 +95,7 @@ void	ft_colorsquare(t_pix *pix, t_square *sq)
 		if (x >= 0 && y >= 0)
 		{
 			pix->t = t0;
-			ft_veccpy(sq->vec, S.normal);
+			ft_normal_plane(sq->vec, pix);
 			ft_cpyrgb(sq->rgb, pix->color);
 		}
 	}
@@ -100,6 +119,7 @@ void	ft_colortriangle(t_pix *pix, t_triangle *tr)
 		{
 			pix->t = t0;
 			ft_trnormal(tr->xyz, &(tr->xyz[3]), &(tr->xyz[6]));
+			ft_normal_plane(S.normal, pix);
 			ft_cpyrgb(tr->rgb, pix->color);
 		}
 	}
@@ -117,7 +137,7 @@ void	ft_colorcylinder(t_pix *pix, t_cylinder *cy)
 		if (b < a)
 		{
 			pix->t = b;
-			ft_veccpy(cy->vec, S.normal);
+			ft_normal_plane(cy->vec, pix);
 			ft_cpyrgb(cy->rgb, pix->color);
 			return ;
 		}
