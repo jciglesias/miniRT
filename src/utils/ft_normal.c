@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:00:28 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/02 18:38:56 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/13 14:24:30 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,4 @@ void	ft_cy_normal(t_pix *pix, t_cylinder *cy)
 	ft_dif_vector(v, d, v);
 	ft_normal(v);
 	ft_veccpy(v, S.normal);
-}
-
-void	ft_cpyrgb(int *rgb, int *color)
-{
-	int i;
-
-	i = 0;
-	while (i < 3)
-	{
-		color[i] = rgb[i];
-		i++;
-	}
 }

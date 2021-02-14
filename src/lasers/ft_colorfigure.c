@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/09 17:44:19 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/13 14:48:06 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,6 @@ void	ft_colorsphere(t_pix *pix, t_sphere *sp)
 		ft_sphere_normal(sp->xyz, pix->o, pix->vec, t0);
 		ft_cpyrgb(sp->rgb, pix->color);
 	}
-}
-
-void	ft_normal_plane(double *v, t_pix *pix)
-{
-	double temp[3];
-	double nv;
-
-	temp[0] = -pix->vec[0];
-	temp[1] = -pix->vec[1];
-	temp[2] = -pix->vec[2];
-	nv = ft_dot_product(v, temp);
-	if (nv < 0)
-	{
-		S.normal[0] = -v[0];
-		S.normal[1] = -v[1];
-		S.normal[2] = -v[2];
-	}
-	else
-		ft_veccpy(v, S.normal);
 }
 
 void	ft_colorplane(t_pix *pix, t_plane *pl)

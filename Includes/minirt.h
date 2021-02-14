@@ -6,12 +6,12 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/02 18:38:11 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/14 01:09:20 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		MINIRT_H
-# define	MINIRT_H
+#ifndef MINIRT_H
+# define MINIRT_H
 # include <mlx.h>
 # include "libft.h"
 # include <stdlib.h>
@@ -21,15 +21,15 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
-# define	S g_scene
-# define	PL plane
-# define	L light
-# define	TR triangle
-# define	SQ square
-# define	CY cylinder
-# define	SP sphere
-# define	C cam
-# define	E endian
+# define S g_scene
+# define PL plane
+# define L light
+# define TR triangle
+# define SQ square
+# define CY cylinder
+# define SP sphere
+# define C cam
+# define E endian
 
 typedef struct		s_layer
 {
@@ -234,7 +234,7 @@ double				ft_intersect_base(double *vec, double *o,
 double				ft_intersect_base2(double *vec, double *o,
 									t_cylinder *cy, double *t);
 void				ft_movecy(double *ray, t_cylinder *cy, double *vec,
-							  double *o);
+							double *o);
 double				ft_infinit_cy(double *vec, double *o, t_cylinder *cy);
 double				ft_caps(double *vec, double *o, t_cylinder *cy);
 void				ft_colorsphere(t_pix *pix, t_sphere *sp);
@@ -246,7 +246,22 @@ void				ft_back_trace(t_pix *pix);
 void				ft_sphere_normal(double *c, double *o, double *v, double t);
 void				ft_trnormal(double *a, double *b, double *c);
 void				ft_cy_normal(t_pix *pix, t_cylinder *cy);
-
+int					ft_ob_sp(double t, double *v, double *o);
+int					ft_ob_pl(double t, double *v, double *o);
+int					ft_ob_sq(double t, double *v, double *o);
+int					ft_ob_cy(double t, double *v, double *o);
+int					ft_ob_tr(double t, double *v, double *o);
+int					ft_sp_obstruction(double t, double *v, double *o,
+									t_sphere *sp);
+int					ft_pl_obstruction(double t, double *v, double *o,
+									t_plane *pl);
+int					ft_sq_obstruction(double t, double *v, double *o,
+									t_square *sq);
+int					ft_cy_obstruction(double t, double *v, double *o,
+									t_cylinder *cy);
+int					ft_tr_obstruction(double t, double *v, double *o,
+									t_triangle *tr);
+void				ft_normal_plane(double *v, t_pix *pix);
 
 /*
 ** testing
@@ -254,5 +269,4 @@ void				ft_cy_normal(t_pix *pix, t_cylinder *cy);
 
 void				test_scene(void);
 
-//int					ft_skip(char *str, char *line);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 20:27:39 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/03 18:30:18 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/13 14:34:37 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		check_cylinder(double *o, double *vec, t_cylinder *cy, double *t)
 	double c;
 
 	ft_dif_vector(o, cy->xyz, u);
-	ft_magxvec(cy->vec, ft_dot_product(u, cy->vec),  u);
+	ft_magxvec(cy->vec, ft_dot_product(u, cy->vec), u);
 	ft_dif_vector(o, cy->xyz, v);
 	ft_dif_vector(v, u, u);
 	ft_magxvec(cy->vec, ft_dot_product(vec, cy->vec), v);
@@ -49,7 +49,7 @@ double	ft_infinit_cy(double *vec, double *o, t_cylinder *cy)
 	double	dif2[3];
 
 	if (!(check_cylinder(o, vec, cy, t)))
-		return(4000);
+		return (4000);
 	ft_dif_vector(cy->xyz, o, dif1);
 	ft_magxvec(vec, t[0], dif2);
 	ft_dif_vector(dif2, dif1, dif2);
@@ -60,7 +60,8 @@ double	ft_infinit_cy(double *vec, double *o, t_cylinder *cy)
 	if (!((d1 >= 0 && d1 <= cy->h && t[0] > 0) || (d2 >= 0 && d2 <= cy->h
 												&& t[0] > 0)))
 		return (4000);
-	if ((d1 >= 0 && d1 <= cy->h	&& t[0] > 0) && (d2 >= 0 && d2 <= cy->h && t[1] > 0))
+	if ((d1 >= 0 && d1 <= cy->h && t[0] > 0) && (d2 >= 0 &&
+												d2 <= cy->h && t[1] > 0))
 		return (ft_t0t1(t[0], t[1]));
 	else if (d1 >= 0 && d1 <= cy->h && t[0] > 0)
 		return (t[0]);
@@ -101,8 +102,6 @@ double	ft_caps(double *vec, double *o, t_cylinder *cy)
 			return (d1);
 		else if (d2 < 4000 && ft_distance(p2, c) <= (cy->d / 2))
 			return (d2);
-		//return (ft_t0t1(d1, d2));
-		return (4000);
 	}
 	return (4000);
 }

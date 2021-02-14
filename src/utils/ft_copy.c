@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_skip.c                                          :+:      :+:    :+:   */
+/*   ft_copy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/30 01:10:56 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/08/30 01:10:58 by jiglesia         ###   ########.fr       */
+/*   Created: 2021/02/13 14:21:07 by jiglesia          #+#    #+#             */
+/*   Updated: 2021/02/13 14:23:54 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	ft_skip(char *set, char *line)
+void	ft_cpyrgb(int *rgb, int *color)
 {
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
-	while (set[i])
+	while (i < 3)
 	{
-		if (set[i++] == line[j])
-		{
-			i = 0;
-			j++;
-		}
+		color[i] = rgb[i];
+		i++;
 	}
-	return (j);
+}
+
+void	ft_veccpy(double *p, double *p0)
+{
+	int i;
+
+	i = -1;
+	while (++i < 3)
+		p0[i] = p[i];
 }
