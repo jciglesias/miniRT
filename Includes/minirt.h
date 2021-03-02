@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/14 01:09:20 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/02/28 23:32:04 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,25 @@ typedef struct		s_pix
 	int				color[3];
 }					t_pix;
 
+typedef struct		s_header
+{
+	char			type[2];
+	unsigned int	size;
+	unsigned int	reserved;
+	unsigned int	offset;
+	unsigned int	size2;
+	int				width;
+	int				height;
+	unsigned short	colplanes;
+	unsigned short	bpp;
+	unsigned int	compression;
+	unsigned int	img_size;
+	int				x_ppm;
+	int				y_ppm;
+	unsigned int	color_number;
+	unsigned int	important_color;
+}					t_head;
+
 typedef struct		s_scene
 {
 	int				r;
@@ -135,6 +154,7 @@ typedef struct		s_scene
 	void			*win;
 	double			normal[3];
 	t_pix			pix;
+	t_head			head;
 }					t_scene;
 
 extern t_scene		g_scene;
@@ -179,6 +199,7 @@ int					ft_check_vec(char *vec);
 int					ft_check_rgb(char *rgb);
 int					ft_strerror(char *str, int a, char **line);
 void				ft_start_render(void);
+void				ft_save_file(int **map, char *a);
 
 /*
 ** events
@@ -191,6 +212,7 @@ int					mouse_win(int button, int x, int y, void *p);
 ** rendering
 */
 
+void				ft_fill_bmp(t_cam *c, int **bmp);
 void				ft_load_scene(void);
 void				ft_plotrt(void);
 int					**ft_mallotrix(int **bmp);
