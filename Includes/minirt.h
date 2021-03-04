@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/28 23:32:04 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/04 01:03:22 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,6 +284,11 @@ int					ft_cy_obstruction(double t, double *v, double *o,
 int					ft_tr_obstruction(double t, double *v, double *o,
 									t_triangle *tr);
 void				ft_normal_plane(double *v, t_pix *pix);
+
+/*
+** destroying
+*/
+void				ft_free_scene(void);
 
 /*
 ** testing

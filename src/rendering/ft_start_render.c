@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 13:24:11 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/21 19:30:42 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/04 20:12:11 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	ft_start_render(void)
 	else
 		S.lendian = 0;
 	if (!(S.mlx = mlx_init()))
-		exit(1);
+		return ;
 	ft_check_res();
 	if (!(S.win = mlx_new_window(S.mlx, S.res[0], S.res[1], "RayTracing")))
-		exit(1);
+		return ;
 	mlx_string_put(S.mlx, S.win, S.res[0] / 2 - 35, S.res[1] / 2,
 				0xFFFFFF, "LOADING...");
 	ft_load_scene();

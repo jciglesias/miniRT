@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:45:47 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/08 18:14:57 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/03 23:31:40 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int		ft_check_entry(int fd, char *line, int r, int a)
 			if (!ft_check_line(elem, line))
 				return (ft_wrongline(line, &line, bowl));
 		}
+		free(line);
+		line = NULL;
 	}
 	free(line);
 	return (1);

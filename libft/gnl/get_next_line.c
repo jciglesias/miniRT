@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 13:43:51 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/09/12 18:41:17 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/03 01:25:26 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int				ft_newline(char **line, char *bowl, size_t j)
 	size_t	i;
 
 	i = 0;
-	if (!(*line = (char *)malloc(sizeof(char) * (ft_strlen(bowl) + 1))))
+	if (!((*line) = (char *)malloc(sizeof(char) * (ft_strlen(bowl) + 1))))
 		return (-1);
 	(*line)[i] = 0;
 	while (bowl[i])

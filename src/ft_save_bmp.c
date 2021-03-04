@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 17:09:24 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/02 16:26:33 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/02 16:59:45 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	ft_save_file(int **map, char *a)
 	int fd;
 
 	fd = ft_create_file(a);
+	free(a);
 	ft_create_header();
 	ft_write_header(fd);
 	ft_write_file(map, fd, 0, 0);

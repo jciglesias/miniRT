@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:48:07 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/21 19:50:32 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/04 20:25:57 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,27 @@ int		key_win(int key, void *p)
 {
 	char *ccams;
 
-	(void)p;
 	if (key == 0xFF1B)
+	{
+		ft_free_scene();
 		exit(0);
+	}
+	ccams = NULL;
 	if (key == 65361)
 	{
-		mlx_clear_window(S.mlx, S.win);
+		mlx_clear_window(p, S.win);
 		change_cam(1);
 		ccams = ft_itoa(count_cams());
-		mlx_string_put(S.mlx, S.win, 28, S.res[1] - 5, 0xFFFFFF, ccams);
+		mlx_string_put(p, S.win, 28, S.res[1] - 5, 0xFFFFFF, ccams);
 	}
 	if (key == 65363)
 	{
-		mlx_clear_window(S.mlx, S.win);
+		mlx_clear_window(p, S.win);
 		change_cam(0);
 		ccams = ft_itoa(count_cams());
-		mlx_string_put(S.mlx, S.win, 28, S.res[1] - 5, 0xFFFFFF, ccams);
+		mlx_string_put(p, S.win, 28, S.res[1] - 5, 0xFFFFFF, ccams);
 	}
-	mlx_string_put(S.mlx, S.win, 5, S.res[1] - 5, 0xFFFFFF, "cam");
+	mlx_string_put(p, S.win, 5, S.res[1] - 5, 0xFFFFFF, "cam");
+	free(ccams);
 	return (0);
 }

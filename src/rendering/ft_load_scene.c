@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:24:14 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/28 17:10:09 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/04 20:58:36 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,23 @@ void	ft_load_scene(void)
 	t_cam	*c;
 	int		mpos;
 	int		count;
+	char	*str;
 
-	mpos = 13;
-	mlx_string_put(S.mlx, S.win, 5, mpos, 0xFFFFFF, "Loading Scene...");
-	mpos += 13;
-	mlx_string_put(S.mlx, S.win, 5, mpos, 0xFFFFFF, "Number of Cameras:");
-	mlx_string_put(S.mlx, S.win, 119, mpos, 0x88FFFF, ft_itoa(S.c));
+	mlx_string_put(S.mlx, S.win, 5, 13, 0xFFFFFF, "Loading Scene...");
+	mlx_string_put(S.mlx, S.win, 5, 26, 0xFFFFFF, "Number of Cameras:");
+	str = ft_itoa(S.c);
+	mlx_string_put(S.mlx, S.win, 119, 26, 0x88FFFF, str);
+	free(str);
 	c = S.cam;
 	count = 0;
+	mpos = 26;
 	while (c)
 	{
 		mpos += 13;
-		count++;
 		mlx_string_put(S.mlx, S.win, 5, mpos, 0xFFFFFF, "Loading Cam");
-		mlx_string_put(S.mlx, S.win, 80, mpos, 0x88FF88, ft_itoa(count));
+		str = ft_itoa(++count);
+		mlx_string_put(S.mlx, S.win, 80, mpos, 0x88FF88, str);
+		free(str);
 		c->bmp = ft_mallotrix(c->bmp);
 		ft_fill_bmp(c, c->bmp);
 		c = c->next;

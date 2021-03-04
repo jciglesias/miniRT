@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 21:04:57 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/02 16:29:03 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/04 21:02:22 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	ft_save_bmp(char *file)
 		i++;
 		c = c->next;
 	}
+	ft_free_scene();
 	return (0);
 }
 

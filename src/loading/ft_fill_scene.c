@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 20:37:37 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/19 14:26:05 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/03 23:33:37 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	ft_fill_scene(int fd)
 		{
 			elem = ft_check_elem(line);
 			ft_fill_line(elem, line);
-			free(line);
-			line = NULL;
 		}
+		free(line);
+		line = NULL;
 	}
 	free(line);
 	if (!S.a)
