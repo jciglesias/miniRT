@@ -6,7 +6,7 @@
 #    By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/09 12:55:34 by jiglesia          #+#    #+#              #
-#    Updated: 2021/03/04 21:24:58 by jiglesia         ###   ########.fr        #
+#    Updated: 2021/03/09 22:47:53 by jiglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -43,7 +43,7 @@ SRC			=	minirt.c ft_save_bmp.c ft_free_scene.c
 CHECKING	=	check_elements.c check_figures.c ft_check_entry.c suport_check.c
 LASERS		=	ft_mallotrix.c ft_camera_to_world.c ft_colorfigure.c ft_intersect_cy.c ft_back_trace.c ft_sphere_normal.c ft_obs.c ft_obstructions.c
 RENDERING	=	ft_start_render.c ft_load_scene.c ft_color_figures.c ft_render_bmp.c ft_sq_to_pl.c
-UTILS		=	ft_strerror.c ft_normal.c ft_maxx.c ft_angle.c ft_copy.c ft_t0t1.c
+UTILS		=	ft_strerror.c ft_normal.c ft_maxx.c ft_angle.c ft_copy.c ft_t0t1.c ft_rotate.c
 EVENTS		=	key_win.c
 LOADING		=	fill_support.c  ft_fill_elements.c  ft_fill_figures.c  ft_fill_scene.c  ft_init_elements2.c  ft_init_elements.c  ft_init_scene.c
 

@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 13:24:11 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/04 20:12:11 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/10 00:45:19 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,31 @@ void	ft_check_res(void)
 		S.res[1] = y - 60;
 }
 
+int		exit_win(void *p)
+{
+	(void)p;
+	ft_free_scene();
+	exit(0);
+	return (1);
+}
+
+int		mouse_press(int button, int x, int y, void *p)
+{
+	(void)p;
+
+	if (!S.click && button)
+	{
+		ft_primray((double)y, (double)x, S.action_cam, S.pix.vec);
+		ft_veccpy(S.action_cam->xyz, S.pix.o);
+		ft_gtpxl(&S.pix);
+		if (S.pix.fig != 5)
+			S.click = button;
+		if (S.pix.fig == 1 && button == 3)
+			S.click = 0;
+	}
+	return (1);
+}
+
 void	ft_start_render(void)
 {
 	int a;
@@ -53,6 +78,9 @@ void	ft_start_render(void)
 	mlx_string_put(S.mlx, S.win, S.res[0] / 2 - 35, S.res[1] / 2,
 				0xFFFFFF, "LOADING...");
 	ft_load_scene();
+	S.click = 0;
+	mlx_hook(S.win, DestroyNotify, 0, exit_win, 0);
 	mlx_key_hook(S.win, key_win, S.mlx);
+	mlx_mouse_hook(S.win, mouse_press, S.mlx);
 	mlx_loop(S.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 16:08:01 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/13 14:41:29 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/04 23:43:15 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_check_obstacle(double *p, double *vec, double *o)
 {
 	double	t;
 
-	t = ft_distance(p, o) - 0.001;
+	t = ft_distance(p, o) - 0.00001;
 	if (ft_ob_sp(t, vec, o))
 		return (1);
 	if (ft_ob_pl(t, vec, o))
@@ -81,16 +81,12 @@ void	ft_lights(double *nv, t_pix *pix)
 
 void	ft_back_trace(t_pix *pix)
 {
-	double v[3];
 	double nv;
 	double r;
 	double g;
 	double b;
 
-	v[0] = -pix->vec[0];
-	v[1] = -pix->vec[1];
-	v[2] = -pix->vec[2];
-	nv = ft_dot_product(S.normal, v) * S.al;
+	nv = ft_calculate_nv(pix->vec) * S.al;
 	r = S.rgb[0] / 255;
 	g = S.rgb[1] / 255;
 	b = S.rgb[2] / 255;

@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/04 01:03:22 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/10 00:45:41 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 # define SP sphere
 # define C cam
 # define E endian
+# define LeaveWindowMask (1L<<5)
+# define StructureNotifyMask (1L<<17)
+# define DestroyNotify 17
 
 typedef struct		s_layer
 {
@@ -106,6 +109,12 @@ typedef struct		s_pix
 	double			vec[3];
 	double			o[3];
 	int				color[3];
+	t_sphere		*sp;
+	t_plane			*pl;
+	t_square		*sq;
+	t_cylinder		*cy;
+	t_triangle		*tr;
+	int				fig;
 }					t_pix;
 
 typedef struct		s_header
@@ -155,6 +164,9 @@ typedef struct		s_scene
 	double			normal[3];
 	t_pix			pix;
 	t_head			head;
+	int				click;
+	double			rot[3];
+	double 			trans[3];
 }					t_scene;
 
 extern t_scene		g_scene;
@@ -206,13 +218,17 @@ void				ft_save_file(int **map, char *a);
 */
 
 int					key_win(int key, void *p);
-int					mouse_win(int button, int x, int y, void *p);
+int					mouse_press(int button, int x, int y, void *p);
+void				ft_translate(int key);
+void				ft_rotate(int key);
 
 /*
 ** rendering
 */
 
 void				ft_fill_bmp(t_cam *c, int **bmp);
+void				ft_primray(double y, double x, t_cam *cam, double *vec);
+int					ft_gtpxl(t_pix *pix);
 void				ft_load_scene(void);
 void				ft_plotrt(void);
 int					**ft_mallotrix(int **bmp);

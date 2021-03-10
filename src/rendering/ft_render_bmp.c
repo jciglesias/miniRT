@@ -6,7 +6,7 @@
 /*   By: user <ciglesia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 12:11:46 by user              #+#    #+#             */
-/*   Updated: 2020/11/21 20:22:31 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/10 01:40:37 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void		ft_plotrt(void)
 			exit(1);
 		l->data = mlx_get_data_addr(l->img, &l->bpp, &l->bpl, &l->endian);
 		fill_img(l, S.res[0], S.res[1], cam->bmp);
+		mlx_put_image_to_window(S.mlx, S.win, S.cam->layer.img, 0, 0);
 		cam = cam->next;
 	}
-	mlx_put_image_to_window(S.mlx, S.win, S.cam->layer.img, 0, 0);
 	mlx_string_put(S.mlx, S.win, 5, S.res[1] - 5, 0xFFFFFF, "cam 1");
 }
