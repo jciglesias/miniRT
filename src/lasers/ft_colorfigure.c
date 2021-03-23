@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/09 09:37:04 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/11 19:05:38 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	ft_colorsquare(t_pix *pix, t_square *sq)
 	double	p[3];
 	double	x;
 	double	y;
+	double	z;
 
 	t0 = pix->t;
 	if (ft_sq_to_pl(pix->vec, pix->o, &t0, sq))
@@ -77,7 +78,8 @@ void	ft_colorsquare(t_pix *pix, t_square *sq)
 		ft_dif_vector(p, sq->xyz, p);
 		x = ft_maxx(sq->vec, sq->side * 3 / 4) - fabs(p[0]);
 		y = ft_maxy(sq->vec, sq->side * 3 / 4) - fabs(p[1]);
-		if (x >= 0 && y >= 0)
+		z = ft_maxz(sq->vec, sq->side * 3 / 4) - fabs(p[2]);
+		if (x >= 0 && y >= 0 && z >=0)
 		{
 			pix->t = t0;
 			pix->fig = 3;

@@ -6,7 +6,7 @@
 /*   By: user <ciglesia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 12:11:46 by user              #+#    #+#             */
-/*   Updated: 2021/03/10 01:40:37 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/10 19:56:17 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,19 @@ static void	fill_img(t_layer *l, int w, int h, int **bmp)
 	}
 }
 
-void		ft_plotrt(void)
+void		ft_plotrt(t_cam *cam, int count)
 {
-	t_cam	*cam;
+	char	*str;
 	t_layer	*l;
 
-	cam = S.cam;
-	while (cam)
-	{
-		l = &cam->layer;
-		if (!(l->img = mlx_new_image(S.mlx, S.res[0], S.res[1])))
-			exit(1);
-		l->data = mlx_get_data_addr(l->img, &l->bpp, &l->bpl, &l->endian);
-		fill_img(l, S.res[0], S.res[1], cam->bmp);
-		mlx_put_image_to_window(S.mlx, S.win, S.cam->layer.img, 0, 0);
-		cam = cam->next;
-	}
-	mlx_string_put(S.mlx, S.win, 5, S.res[1] - 5, 0xFFFFFF, "cam 1");
+	l = &cam->layer;
+	if (!(l->img = mlx_new_image(S.mlx, S.res[0], S.res[1])))
+		exit(1);
+	l->data = mlx_get_data_addr(l->img, &l->bpp, &l->bpl, &l->endian);
+	fill_img(l, S.res[0], S.res[1], cam->bmp);
+	mlx_put_image_to_window(S.mlx, S.win, cam->layer.img, 0, 0);
+	mlx_string_put(S.mlx, S.win, 5, S.res[1] - 5, 0xFFFFFF, "cam ");
+	str = ft_itoa(count);
+	mlx_string_put(S.mlx, S.win, 28, S.res[1] - 5, 0xFFFFFF, str);
+	free(str);
 }

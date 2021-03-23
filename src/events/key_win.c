@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:48:07 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/10 01:29:56 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/10 23:45:19 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int		key_win(int key, void *p)
 		ft_display_next(0, NULL, p);
 	else if (S.click == 1)
 		ft_translate(key);
-	//else if (S.click == 2)
-	//	ft_resize(key);
+	else if (S.click == 2)
+		ft_resize(key);
 	else if (S.click == 3)
 		ft_rotate(key);
 	mlx_string_put(p, S.win, 5, S.res[1] - 5, 0xFFFFFF, "cam");

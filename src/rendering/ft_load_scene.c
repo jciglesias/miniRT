@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 22:24:14 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/09 22:55:57 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/10 19:56:41 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,6 @@ void	ft_load_scene(void)
 	char	*str;
 
 	mlx_string_put(S.mlx, S.win, 5, 13, 0xFFFFFF, "Loading Scene...");
-	mlx_string_put(S.mlx, S.win, 5, 26, 0xFFFFFF, "Number of Cameras:");
-	str = ft_itoa(S.c);
-	mlx_string_put(S.mlx, S.win, 119, 26, 0x88FFFF, str);
-	free(str);
 	c = S.cam;
 	count = 0;
 	mpos = 26;
@@ -84,7 +80,8 @@ void	ft_load_scene(void)
 		free(str);
 		c->bmp = ft_mallotrix(c->bmp);
 		ft_fill_bmp(c, c->bmp);
+		S.action_cam = c;
+		ft_plotrt(c, count);
 		c = c->next;
 	}
-	ft_plotrt();
 }

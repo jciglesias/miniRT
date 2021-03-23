@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 14:40:27 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/13 14:41:10 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/23 17:14:28 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,18 @@ int		ft_sq_obstruction(double t, double *v, double *o, t_square *sq)
 	double	p[3];
 	double	x;
 	double	y;
+	double	z;
 
 	t0 = t;
-	if (ft_sq_to_pl(v, o, &t0, sq))
+	if (ft_sq_to_pl_obst(v, o, &t0, sq))
 	{
 		ft_magxvec(v, t0, p);
 		ft_sum_vector(o, p, p);
 		ft_dif_vector(p, sq->xyz, p);
 		x = ft_maxx(sq->vec, sq->side * 3 / 4) - fabs(p[0]);
 		y = ft_maxy(sq->vec, sq->side * 3 / 4) - fabs(p[1]);
-		if (x >= 0 && y >= 0)
+		z = ft_maxz(sq->vec, sq->side * 3 / 4) - fabs(p[2]);
+		if (x >= 0 && y >= 0 && z >=0)
 			return (1);
 	}
 	return (0);
@@ -81,7 +83,7 @@ int		ft_cy_obstruction(double t, double *v, double *o, t_cylinder *cy)
 	double	b;
 
 	a = ft_infinit_cy(v, o, cy);
-	b = ft_caps(v, o, cy);
+	b = ft_caps_obst(v, o, cy);
 	if (a < t || b < t)
 		return (1);
 	return (0);
@@ -95,7 +97,7 @@ int		ft_tr_obstruction(double t, double *v, double *o, t_triangle *tr)
 	double	y;
 
 	t0 = t;
-	if (ft_tr_to_pl(v, o, &t0, tr))
+	if (ft_tr_to_pl_obst(v, o, &t0, tr))
 	{
 		ft_magxvec(v, t0, p);
 		ft_sum_vector(o, p, p);

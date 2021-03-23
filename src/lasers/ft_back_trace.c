@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 16:08:01 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/04 23:43:15 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/23 12:09:44 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	ft_lights(double *nv, t_pix *pix)
 	lts = S.light;
 	while (lts)
 	{
-		temp = ft_trace_light(pix, lts);
-		if (temp > *nv)
+		temp = ft_trace_light(pix, lts);//return 0 again
+		if (temp > *nv)// && *nv != 0.1) || temp == 0.1)
 			*nv = temp;
 		lts = lts->next;
 	}

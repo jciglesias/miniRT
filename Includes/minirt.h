@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/10 00:45:41 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/23 17:26:01 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,8 @@ int					key_win(int key, void *p);
 int					mouse_press(int button, int x, int y, void *p);
 void				ft_translate(int key);
 void				ft_rotate(int key);
+void				ft_resize(int key);
+void				ft_numb_convert(int *key);
 
 /*
 ** rendering
@@ -230,7 +232,7 @@ void				ft_fill_bmp(t_cam *c, int **bmp);
 void				ft_primray(double y, double x, t_cam *cam, double *vec);
 int					ft_gtpxl(t_pix *pix);
 void				ft_load_scene(void);
-void				ft_plotrt(void);
+void				ft_plotrt(t_cam *cam, int count);
 int					**ft_mallotrix(int **bmp);
 int					ft_rgb(unsigned char r, unsigned char g,
 							unsigned char b);
@@ -257,6 +259,7 @@ void				ft_magxvec(double *vec, double mag, double *p);
 double				ft_distance(double *a, double *b);
 double				ft_maxx(double *n, double mag);
 double				ft_maxy(double *n, double mag);
+double				ft_maxz(double *n, double mag);
 int					ft_cmpangles(double x, double y, double *p, t_triangle *tr);
 double				ft_angle(double *a, double *b, double *c);
 void				ft_move_x(double x, double *p);
@@ -300,6 +303,13 @@ int					ft_cy_obstruction(double t, double *v, double *o,
 int					ft_tr_obstruction(double t, double *v, double *o,
 									t_triangle *tr);
 void				ft_normal_plane(double *v, t_pix *pix);
+int					ft_sq_to_pl_obst(double *v, double *o, double *t,
+									t_square *pl);
+double				ft_cy_to_pl_obst(double *v, double *o, double *c,
+									double *n);
+int					ft_tr_to_pl_obst(double *v, double *o, double *t,
+									t_triangle *tr);
+double				ft_caps_obst(double *vec, double *o, t_cylinder *cy);
 
 /*
 ** destroying
