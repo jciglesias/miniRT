@@ -6,7 +6,7 @@
 #    By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/09 12:55:34 by jiglesia          #+#    #+#              #
-#    Updated: 2021/03/23 17:21:04 by jiglesia         ###   ########.fr        #
+#    Updated: 2021/03/28 16:47:28 by jiglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,8 +20,8 @@ INC			=	./Includes/
 SUB_MAKE	=	./libft/
 INCFT		=	./libft/
 # Lib mlx
-DIRMLX		=	/usr/lib/
-INCMLX		=	/usr/include/
+DIRMLX		=	./minilibx-linux/
+INCMLX		=	./minilibx-linux/
 
 
 INCLUDE		=	-I $(INCMLX) -O3 -I $(INCFT) -I $(INC)
@@ -97,7 +97,7 @@ ECHO		=	/bin/echo -e
 
 #************************ MAIN COMPILATION *************************
 
-$(NAME)	:		ftlib $(OBJS)
+$(NAME)	:		ftlib minilibx $(OBJS)
 				@$(CC)  $(INCLUDE) $(CFLAGS) -o $(NAME) $(OBJS) $(INC_LIB)
 				@$(ECHO) '> Compiled'
 
@@ -112,12 +112,16 @@ all		:		$(NAME)
 fclean	:		clean
 				@$(RM) $(NAME)
 				@(cd $(SUB_MAKE) && $(MAKE) fclean)
+				@(cd $(DIRMLX) && $(MAKE) clean)
 				@$(ECHO) '> Remove executable'
 
 re		:		fclean all
 
 ftlib	:
 				@(cd $(SUB_MAKE) && $(MAKE))
+
+minilibx:
+				@(cd $(DIRMLX) && $(MAKE))
 
 .PHONY	:		all clean re
 
