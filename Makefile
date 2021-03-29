@@ -6,7 +6,7 @@
 #    By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/09 12:55:34 by jiglesia          #+#    #+#              #
-#    Updated: 2021/03/28 16:47:28 by jiglesia         ###   ########.fr        #
+#    Updated: 2021/03/28 17:00:30 by jiglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -122,6 +122,9 @@ ftlib	:
 
 minilibx:
 				@(cd $(DIRMLX) && $(MAKE))
+
+apt		:
+				@(sudo apt-get install gcc make xorg libxext-dev libbsd-dev)
 
 .PHONY	:		all clean re
 

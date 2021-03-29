@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 13:29:06 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/11 19:05:38 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/03/29 02:07:59 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,26 @@ void	ft_colorplane(t_pix *pix, t_plane *pl)
 	double l[3];
 	double denom;
 	double t0;
+	double n[3];
 
 	t0 = 4000.;
 	denom = ft_dot_product(pl->vec, pix->vec);
-	if (denom > (1 / 1000000))
+	ft_veccpy(pl->vec, n);
+	if (denom < 0)
 	{
-		ft_dif_vector(pl->xyz, pix->o, l);
-		t0 = ft_dot_product(l, pl->vec) / denom;
+		denom *= -1;
+		n[0] *= -1;
+		n[1] *= -1;
+		n[2] *= -1;
 	}
-	if (t0 && pix->t > t0)
+	ft_dif_vector(pl->xyz, pix->o, l);
+	t0 = ft_dot_product(l, n) / denom;
+	l[0] = pix->o[0] + pix->vec[0] * t0;
+	l[1] = pix->o[1] + pix->vec[1] * t0;
+	l[2] = pix->o[2] + pix->vec[2] * t0;
+	ft_normal(l);
+	ft_dif_vector(l, pl->xyz, l);
+	if (t0 && pix->t > t0 && ft_dot_product(l, n) < 0.1)
 	{
 		pix->t = t0;
 		pix->fig = 2;
