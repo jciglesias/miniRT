@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 17:10:15 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/24 11:29:45 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/09 14:50:22 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int		ft_sq_to_pl_obst(double *v, double *o, double *t, t_square *pl)
 
 	t0 = 4000.;
 	denom = ft_dot_product(pl->vec, v);
-	if (denom > (1 / 10000))
+	if (denom)
 	{
 		ft_dif_vector(pl->xyz, o, l);
 		t0 = ft_dot_product(l, pl->vec) / denom;
 	}
-	if (t0 && *t > t0)
+	if (t0 && *t > t0 && t0 >= 0)
 	{
 		*t = t0;
 		return (1);
@@ -93,12 +93,12 @@ int		ft_tr_to_pl_obst(double *vec, double *o, double *t, t_triangle *tr)
 	ft_normal(normal);
 	denom = ft_dot_product(normal, vec);
 	t0 = 0;
-	if (denom > (1 / 10000))
+	if (denom)
 	{
 		ft_dif_vector(tr->xyz, o, l);
 		t0 = ft_dot_product(l, normal) / denom;
 	}
-	if (t0 && *t > t0)
+	if (t0 && *t > t0 && t0 >= 0)
 	{
 		*t = t0;
 		return (1);

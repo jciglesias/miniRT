@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 21:33:08 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/23 17:08:57 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/09 14:47:38 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ int		ft_sq_to_pl(double *vec, double *o, double *t, t_square *pl)
 
 	t0 = 4000.;
 	denom = ft_dot_product(pl->vec, vec);
-	ft_dif_vector(pl->xyz, o, l);
-	t0 = ft_dot_product(l, pl->vec) / denom;
-	if (t0 && *t > t0)
+	if (denom)
+	{
+		ft_dif_vector(pl->xyz, o, l);
+		t0 = ft_dot_product(l, pl->vec) / denom;
+	}
+	if (t0 && *t > t0 && t0 >= 0)
 	{
 		*t = t0;
 		return (1);
@@ -37,9 +40,13 @@ double	ft_cy_to_pl(double *vec, double *o, double *c, double *n)
 	double t0;
 
 	denom = ft_dot_product(n, vec);
-	ft_dif_vector(c, o, l);
-	t0 = ft_dot_product(l, n) / denom;
-	if (t0 && 4000 > t0)
+	t0 = 4000;
+	if (denom)
+	{
+		ft_dif_vector(c, o, l);
+		t0 = ft_dot_product(l, n) / denom;
+	}
+	if (t0 && 4000 > t0 && t0 >= 0)
 		return (t0);
 	return (4000);
 }
@@ -57,9 +64,13 @@ int		ft_tr_to_pl(double *vec, double *o, double *t, t_triangle *tr)
 	ft_crossp(a, l, normal);
 	ft_normal(normal);
 	denom = ft_dot_product(normal, vec);
-	ft_dif_vector(tr->xyz, o, l);
-	t0 = ft_dot_product(l, normal) / denom;
-	if (t0 && *t > t0)
+	t0 = 4000;
+	if (denom)
+	{
+		ft_dif_vector(tr->xyz, o, l);
+		t0 = ft_dot_product(l, normal) / denom;
+	}
+	if (t0 && *t > t0 && t0 >= 0)
 	{
 		*t = t0;
 		return (1);

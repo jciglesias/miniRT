@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 14:40:27 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/23 17:14:28 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/09 14:51:59 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int		ft_pl_obstruction(double t, double *v, double *o, t_plane *pl)
 
 	t0 = 4000.;
 	denom = ft_dot_product(pl->vec, v);
-	if (denom > (1 / 1000000))
+	if (denom)
 	{
 		ft_dif_vector(pl->xyz, o, l);
 		t0 = ft_dot_product(l, pl->vec) / denom;
 	}
-	if (t0 && t > t0)
+	if (t0 && t > t0 && t0 >= 0)
 		return (1);
 	else
 		return (0);

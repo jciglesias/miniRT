@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 21:49:08 by jiglesia          #+#    #+#             */
-/*   Updated: 2020/11/21 19:32:30 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/01 11:40:43 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_fill_pl(char *line)
 	S.pl++;
 	ft_fill_xyz(new->xyz, split[1]);
 	ft_fill_xyz(new->vec, split[2]);
+	ft_normal(new->vec);
 	ft_fill_rgb(new->rgb, split[3]);
 	new->next = S.plane;
 	S.plane = new;
@@ -54,6 +55,7 @@ void	ft_fill_sq(char *line)
 	S.sq++;
 	ft_fill_xyz(new->xyz, split[1]);
 	ft_fill_xyz(new->vec, split[2]);
+	ft_normal(new->vec);
 	new->side = ft_atod(split[3]);
 	ft_fill_rgb(new->rgb, split[4]);
 	new->next = S.square;
@@ -71,6 +73,7 @@ void	ft_fill_cy(char *line)
 	S.cy++;
 	ft_fill_xyz(new->xyz, split[1]);
 	ft_fill_xyz(new->vec, split[2]);
+	ft_normal(new->vec);
 	new->d = ft_atod(split[3]);
 	new->h = ft_atod(split[4]);
 	ft_fill_rgb(new->rgb, split[5]);
