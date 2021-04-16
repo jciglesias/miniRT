@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 21:04:57 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/04 21:02:22 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/13 20:30:22 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_save_bmp(char *file)
 	int		i;
 
 	if (!ft_check_and_fill(file))
-		return (0);
+		return (1);
 	c = S.cam;
 	while (c)
 	{
@@ -68,8 +68,26 @@ int	ft_save_bmp(char *file)
 	return (0);
 }
 
+int	ft_check_rt(char *file)
+{
+	int i;
+
+	i = 0;
+	while (file[i])
+	{
+		if (file[i++] == '.')
+			if (file[i++] == 'r')
+				if (file[i] == 't')
+					return (1);
+	}
+	return (0);
+}
+
 int	main(int argv, char **argc)
 {
+	if (argc[1])
+		if (!ft_check_rt(argc[1]))
+			return (ft_puterror("Wrong file\n", 1));
 	if (argv == 2)
 		return (ft_show_window(argc[1]));
 	if (argv == 3)

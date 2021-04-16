@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:04:12 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/02/16 14:43:24 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/13 18:17:11 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_camera_to_world(double *p, t_cam *c)
 	rady = 0;
 	if (hipo)
 		rady = acos(x / hipo);
-	if (rady || c->vec[2] == 1)
+	if (rady || c->vec[2] == 1 || x == 1)
 		rady = ft_quadrant(-c->vec[0], c->vec[2], rady) - (3.141593 * 3 / 2);
 	ft_move_y(rady, p);
 }

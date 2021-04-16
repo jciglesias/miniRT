@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/23 17:26:01 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/13 18:04:24 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@
 # define SP sphere
 # define C cam
 # define E endian
-# define LeaveWindowMask (1L<<5)
-# define StructureNotifyMask (1L<<17)
-# define DestroyNotify 17
 
 typedef struct		s_layer
 {
@@ -212,6 +209,7 @@ int					ft_check_rgb(char *rgb);
 int					ft_strerror(char *str, int a, char **line);
 void				ft_start_render(void);
 void				ft_save_file(int **map, char *a);
+void				ft_check_res(void);
 
 /*
 ** events

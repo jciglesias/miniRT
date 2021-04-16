@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 17:10:15 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/04/09 14:50:22 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/16 19:51:14 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,15 @@ double	ft_cy_to_pl_obst(double *vec, double *o, double *c, double *n)
 
 	denom = ft_dot_product(n, vec);
 	t0 = 4000;
-	if (denom > (1 / 1000000))
+	if (denom)
 	{
 		ft_dif_vector(c, o, l);
 		t0 = ft_dot_product(l, n) / denom;
 	}
-	return (t0);
+	if (t0 >= 0)
+		return (t0);
+	else
+		return (4000);
 }
 
 double	ft_caps_obst(double *vec, double *o, t_cylinder *cy)
