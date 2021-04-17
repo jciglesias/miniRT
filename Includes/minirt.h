@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/04/13 18:04:24 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/17 17:37:29 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ typedef struct		s_scene
 	int				click;
 	double			rot[3];
 	double 			trans[3];
+	int				shadow;
 }					t_scene;
 
 extern t_scene		g_scene;
