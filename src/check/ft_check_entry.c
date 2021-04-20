@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:45:47 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/04/20 11:17:30 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:16:47 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		ft_wrongline(char *sms, char **line, char **bowl)
 {
 	ft_puterror("Error\nWrong element in line\n", 0);
 	ft_puterror(sms, 0);
-	ft_putchar('\n');
+	ft_putchar_fd('\n', 2);
 	if (line)
 		free(*line);
 	if (bowl)
