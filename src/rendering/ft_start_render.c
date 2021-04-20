@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 13:24:11 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/04/13 18:02:51 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:47:35 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		exit_win(void *p)
 int		mouse_press(int button, int x, int y, void *p)
 {
 	(void)p;
-
 	if (!S.click && button)
 	{
 		ft_primray((double)y, (double)x, S.action_cam, S.pix.vec);

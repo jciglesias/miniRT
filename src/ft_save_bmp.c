@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 17:09:24 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/02 16:59:45 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 13:43:22 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,17 @@ void	ft_write_file(int **map, int fd, int x, int y)
 	free(array);
 }
 
-void	ft_save_file(int **map, char *a)
+int		ft_save_file(int **map, char *a)
 {
 	int fd;
 
 	fd = ft_create_file(a);
+	if (fd == -1)
+		return (ft_puterror("Error\nMissing folder \"bmps\"\n", 0));
 	free(a);
 	ft_create_header();
 	ft_write_header(fd);
 	ft_write_file(map, fd, 0, 0);
 	close(fd);
+	return (1);
 }

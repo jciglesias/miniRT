@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 21:17:32 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/04/13 18:02:49 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 13:22:45 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ void	ft_fill_r(char *line)
 	split = ft_split(line, ' ');
 	S.r++;
 	S.res[0] = ft_atoi(split[1]);
+	if (S.res[0] < 1)
+		S.res[0] = 1;
 	S.res[1] = ft_atoi(split[2]);
+	if (S.res[1] < 1)
+		S.res[1] = 1;
 	S.mlx = mlx_init();
 	ft_check_res();
 	ft_strerror("", 0, split);

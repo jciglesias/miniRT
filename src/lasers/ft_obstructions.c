@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 14:40:27 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/04/09 14:51:59 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:59:35 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		ft_sq_obstruction(double t, double *v, double *o, t_square *sq)
 		x = ft_maxx(sq->vec, sq->side * 3 / 4) - fabs(p[0]);
 		y = ft_maxy(sq->vec, sq->side * 3 / 4) - fabs(p[1]);
 		z = ft_maxz(sq->vec, sq->side * 3 / 4) - fabs(p[2]);
-		if (x >= 0 && y >= 0 && z >=0)
+		if (x >= 0 && y >= 0 && z >= 0)
 			return (1);
 	}
 	return (0);

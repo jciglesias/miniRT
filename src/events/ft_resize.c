@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 23:44:28 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/21 12:07:21 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:46:41 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	ft_resize_cy(int key, int *neg)
 
 void	ft_resize(int key)
 {
-	static int neg = 1;
-	static int pos = 5;
+	static int	neg = 1;
+	static int	pos = 5;
 	char		output[2];
 
 	if (key >= 65429 && key <= 65438)

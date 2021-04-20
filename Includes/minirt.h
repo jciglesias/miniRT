@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 01:10:17 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/04/17 17:37:29 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 16:15:48 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ typedef struct		s_scene
 	t_head			head;
 	int				click;
 	double			rot[3];
-	double 			trans[3];
+	double			trans[3];
 	int				shadow;
 }					t_scene;
 
@@ -209,7 +209,7 @@ int					ft_check_vec(char *vec);
 int					ft_check_rgb(char *rgb);
 int					ft_strerror(char *str, int a, char **line);
 void				ft_start_render(void);
-void				ft_save_file(int **map, char *a);
+int					ft_save_file(int **map, char *a);
 void				ft_check_res(void);
 
 /*
@@ -310,6 +310,10 @@ int					ft_tr_to_pl_obst(double *v, double *o, double *t,
 									t_triangle *tr);
 double				ft_caps_obst(double *vec, double *o, t_cylinder *cy);
 
+/*
+** utils
+*/
+void				ft_adjust_color(t_pix *pix, int *rgb);
 /*
 ** destroying
 */

@@ -6,14 +6,18 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 09:39:56 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/11 19:06:59 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:42:04 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	ft_rotate_figure(void)
+void	ft_rotate_figure(int *neg, int *i, int *pos)
 {
+	*pos = 5;
+	S.rot[*i] *= *neg;
+	*neg = 1;
+	*i = 0;
 	ft_normal(S.rot);
 	if (S.pix.fig == 2)
 		ft_veccpy(S.rot, S.pix.pl->vec);
@@ -74,19 +78,17 @@ void	ft_rotate(int key)
 	else if (key >= 48 && key <= 57)
 		S.rot[i] = S.rot[i] * 10 + (key - 48);
 	else if (key == 65293 || key == 65421)
-	{
-		pos = 5;
-		S.rot[i] *= neg;
-		neg = 1;
-		ft_rotate_figure();
-		i = 0;
-	}
+		ft_rotate_figure(&neg, &i, &pos);
 	else
 		S.click = 0;
 }
 
-void	ft_translate_figure(void)
+void	ft_translate_figure(int *neg, int *i, int *pos)
 {
+	*pos = 5;
+	S.trans[*i] *= *neg;
+	*neg = 1;
+	*i = 0;
 	if (S.pix.fig == 1)
 		ft_veccpy(S.trans, S.pix.sp->xyz);
 	else if (S.pix.fig == 2)
@@ -103,9 +105,9 @@ void	ft_translate_figure(void)
 
 void	ft_translate(int key)
 {
-	static int i;
-	static int neg = 1;
-	static int pos = 5;
+	static	int i;
+	static	int neg = 1;
+	static	int pos = 5;
 	char		output[2];
 
 	if (key >= 65429 && key <= 65438)
@@ -124,13 +126,7 @@ void	ft_translate(int key)
 	else if (key >= 48 && key <= 57)
 		S.trans[i] = S.trans[i] * 10 + (key - 48);
 	else if (key == 65293 || key == 65421)
-	{
-		pos = 5;
-		S.trans[i] *= neg;
-		neg = 1;
-		ft_translate_figure();
-		i = 0;
-	}
+		ft_translate_figure(&neg, &i, &pos);
 	else
 		S.click = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 21:04:57 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/04/13 20:30:22 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 13:39:43 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_check_and_fill(char *file)
 	int		fd;
 
 	if ((fd = open(file, O_RDONLY)) < 1)
-		return (0);
+		return (ft_puterror("Error\nFile does not exist\n", 0));
 	if (!ft_check_entry(fd, NULL, 0, 0))
 	{
 		close(fd);
@@ -37,7 +37,7 @@ int	ft_check_and_fill(char *file)
 int	ft_show_window(char *file)
 {
 	if (!ft_check_and_fill(file))
-		return (0);
+		return (1);
 	ft_start_render();
 	return (0);
 }
@@ -60,7 +60,8 @@ int	ft_save_bmp(char *file)
 	i = 1;
 	while (c)
 	{
-		ft_save_file(c->bmp, ft_itoa(i));
+		if (!ft_save_file(c->bmp, ft_itoa(i)))
+			return (1);
 		i++;
 		c = c->next;
 	}
@@ -85,9 +86,11 @@ int	ft_check_rt(char *file)
 
 int	main(int argv, char **argc)
 {
+	if (argv == 1)
+		return (ft_puterror("Error\nMissing valid file\n", 1));
 	if (argc[1])
 		if (!ft_check_rt(argc[1]))
-			return (ft_puterror("Wrong file\n", 1));
+			return (ft_puterror("Error\nWrong file extension\n", 1));
 	if (argv == 2)
 		return (ft_show_window(argc[1]));
 	if (argv == 3)
@@ -95,5 +98,5 @@ int	main(int argv, char **argc)
 		if (!ft_strncmp(argc[2], "--save", 6))
 			return (ft_save_bmp(argc[1]));
 	}
-	return (0);
+	return (ft_puterror("Error\nWrong argument/s\n", 1));
 }

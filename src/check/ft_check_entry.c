@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:45:47 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/03 23:31:40 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 11:17:30 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		ft_wrongline(char *sms, char **line, char **bowl)
 {
 	ft_puterror("Error\nWrong element in line\n", 0);
 	ft_puterror(sms, 0);
+	ft_putchar('\n');
 	if (line)
 		free(*line);
 	if (bowl)
@@ -91,7 +92,7 @@ int		ft_check_entry(int fd, char *line, int r, int a)
 			if (elem[0] && elem[0] == 'A')
 				a++;
 			if (a > 1 || r > 1)
-				return (ft_wrongline("Error\ntoo many A or R", &line, bowl));
+				return (ft_wrongline("Error\ntoo many A or R\n", &line, bowl));
 			if (!ft_check_line(elem, line))
 				return (ft_wrongline(line, &line, bowl));
 		}

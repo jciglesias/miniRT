@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:48:07 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/03/10 23:45:19 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:45:37 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	change_cam(int left)
 	mlx_put_image_to_window(S.mlx, S.win, S.action_cam->layer.img, 0, 0);
 }
 
-void 	ft_display_next(int sense, char *ccams, void *p)
+void	ft_display_next(int sense, char *ccams, void *p)
 {
 	mlx_clear_window(p, S.win);
 	change_cam(sense);

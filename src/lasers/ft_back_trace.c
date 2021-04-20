@@ -6,7 +6,7 @@
 /*   By: jiglesia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 16:08:01 by jiglesia          #+#    #+#             */
-/*   Updated: 2021/04/17 20:18:43 by jiglesia         ###   ########.fr       */
+/*   Updated: 2021/04/20 16:04:39 by jiglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ double	ft_trace_light(t_pix *pix, t_light *l)
 {
 	double p[3];
 	double v[3];
-	double r;
-	double g;
-	double b;
 
 	p[0] = pix->o[0] + pix->vec[0] * pix->t;
 	p[1] = pix->o[1] + pix->vec[1] * pix->t;
@@ -63,12 +60,7 @@ double	ft_trace_light(t_pix *pix, t_light *l)
 			return (0);
 		}
 	}
-	r = l->rgb[0] / 255;
-	g = l->rgb[1] / 255;
-	b = l->rgb[2] / 255;
-	pix->color[0] *= r;
-	pix->color[1] *= g;
-	pix->color[2] *= b;
+	ft_adjust_color(pix, l->rgb);
 	return (ft_calculate_nv(v));
 }
 
@@ -98,17 +90,9 @@ void	ft_lights(double *nv, t_pix *pix)
 void	ft_back_trace(t_pix *pix)
 {
 	double nv;
-	double r;
-	double g;
-	double b;
 
 	nv = ft_calculate_nv(pix->vec) * S.al;
-	r = S.rgb[0] / 255;
-	g = S.rgb[1] / 255;
-	b = S.rgb[2] / 255;
-	pix->color[0] *= r;
-	pix->color[1] *= g;
-	pix->color[2] *= b;
+	ft_adjust_color(pix, S.rgb);
 	if (nv < 0)
 		nv = 0;
 	ft_lights(&nv, pix);
